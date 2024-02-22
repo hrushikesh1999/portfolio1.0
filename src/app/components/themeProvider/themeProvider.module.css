@@ -1,0 +1,41 @@
+.themecontainer {
+    min-height: 100vh;
+    color: var(--text-primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease, fill 0.3s ease;
+    position: relative;
+    animation: fade-in 0.3s ease-in-out none;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.theme-light {
+    --primary-color: var(--primary-color-day);
+    --text-primary-color: var(--text-primary-color-day);
+    --text-secondary-color: var(--text-secondary-color-day);
+    --outlined-border: var(--outlined-border-day);
+    --outlined-hover-bg: var(--outlined-hover-bg-day);
+    --map-filter: var(--map-filter-day);
+    --background: var(--background-day);
+    --chip-bg-color: var(--chip-bg-color-day);
+    --icon-color: var(--icon-color-day);
+}
+
+.theme-dark {
+    --primary-color: var(--primary-color-night);
+    --text-primary-color: var(--text-primary-color-night);
+    --text-secondary-color: var(--text-secondary-color-night);
+    --outlined-border: var(--outlined-border-night);
+    --outlined-hover-bg: var(--outlined-hover-bg-night);
+    --map-filter: var(--map-filter-night);
+    --background: var(--background-night);
+    --chip-bg-color: var(--chip-bg-color-night);
+    --icon-color: var(--icon-color-night);
+}

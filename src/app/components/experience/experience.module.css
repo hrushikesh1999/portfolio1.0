@@ -1,0 +1,119 @@
+/* The actual timeline (the vertical ruler) */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--outlined-border);
+    top: 0;
+    bottom: 0;
+    margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+    padding: 10px 40px 25px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 80%;
+}
+
+.containerheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* The circles on the timeline */
+.container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    border: 2px solid var(--outlined-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid var(--background);
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--background) transparent transparent;
+    backdrop-filter: blur(6.2px);
+    -webkit-backdrop-filter: blur(6.2px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+    left: -16px;
+}
+
+/* The actual content */
+.content {
+    padding: 20px 30px;
+    position: relative;
+    background: var(--background);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.2px);
+    -webkit-backdrop-filter: blur(6.2px);
+    /* border: 1px solid rgba(255, 255, 255, 1); */
+}
+
+.content p {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+
+    /* Place the timelime to the left */
+    .timeline::after {
+        left: 31px;
+    }
+
+    /* Full-width containers */
+    .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    /* Make sure that all arrows are pointing leftwards */
+    .container::before {
+        left: 60px;
+    }
+
+    /* Make sure all circles are at the same spot */
+    .left::after, .right::after {
+        left: 15px;
+    }
+}
+
+
+
+.tags {
+    margin-top: 1rem;
+}
+
+.tags div {
+    margin: 0 0.1rem;
+}

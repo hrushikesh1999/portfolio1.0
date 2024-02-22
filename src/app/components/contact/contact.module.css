@@ -1,0 +1,48 @@
+.mapcontainer {
+    position: relative;
+}
+
+.contactcontainer {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    right: 0;
+    padding: 1rem 2rem 2rem 2rem;
+
+    background: var(--background);
+    border-end-end-radius: 3px;
+    border-top-right-radius: 3px;
+    /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+    backdrop-filter: blur(11.9px);
+    -webkit-backdrop-filter: blur(11.9px);
+    /* border: 0.5px solid rgba(255, 255, 255, 0.2); */
+}
+
+@media (max-width: 768px) {
+    .contactcontainer {
+        position: inherit;
+        width: 100%;
+        margin-top: 2rem;
+        background: var(--background);
+        border-end-end-radius: 3px;
+        border-top-right-radius: 3px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(11.9px);
+        -webkit-backdrop-filter: blur(11.9px);
+    }
+}
+
+.contactcontainer input {
+    margin-bottom: 1rem;
+}
+
+.contactcontainer button {
+    margin-top: 1rem;
+}
+
+.contactformtitle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}

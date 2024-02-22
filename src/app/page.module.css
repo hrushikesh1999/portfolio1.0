@@ -1,0 +1,18 @@
+/* .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+} */
+
+.section {
+  /* min-height: 100vh; */
+  margin: 7rem 0px 7rem 0px;
+}
+
+.toggleTheme {
+  position: fixed;
+  right: 0;
+  bottom: 16px;
+  z-index: 2;
+}

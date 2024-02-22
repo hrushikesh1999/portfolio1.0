@@ -1,0 +1,49 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.btn-active {
+    backdrop-filter: blur(var(--btn-active-blur));
+    -webkit-backdrop-filter: blur(var(--btn-active-blur));
+}
+
+.btn-text {
+    color: var(--text-primary-color);
+    background-color: transparent;
+}
+
+.btn-text:hover,
+.btn-text:active {
+    background: var(--btn-hover-background);
+    backdrop-filter: blur(var(--btn-hover-blur));
+    -webkit-backdrop-filter: blur(var(--btn-hover-blur));
+}
+
+.btn-outlined {
+    color: var(--text-primary-color);
+    background-color: transparent;
+    border: 1px solid var(--outlined-border);
+}
+
+.btn-outlined:hover,
+.btn-outlined:active {
+    background: var(--btn-hover-background);
+    backdrop-filter: blur(var(--btn-hover-blur));
+    -webkit-backdrop-filter: blur(var(--btn-hover-blur));
+}
+
+.btn[disabled] {
+    cursor: default;
+}

@@ -1,0 +1,21 @@
+.acntlinks {
+    display: flex;
+    gap: 15px;
+    margin-top: 1.5rem;
+}
+
+.acntlinks a {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.acntlinks a button svg {
+    transition: transform .2s ease-in-out;
+}
+
+.acntlinks a:hover button svg {
+    transform: scale(1.1);
+}

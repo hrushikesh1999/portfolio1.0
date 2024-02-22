@@ -1,0 +1,62 @@
+.skillcard {
+    background: var(--background);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.9px);
+    -webkit-backdrop-filter: blur(11.9px);
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
+    min-width: 13rem;
+    flex: 30%;
+    max-width: 30%;
+}
+
+@media (max-width: 768px) {
+    .skillcard {
+        flex: 100%;
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+    .skillcard {
+        flex: 50%;
+        max-width: 45%;
+    }
+}
+
+.skillcard ul {
+    margin: 0.5rem 0rem;
+}
+
+.skillcard ul li {
+    padding: 10px 16px;
+    display: flex;
+    /* cursor: pointer; */
+}
+
+.skillcard ul li:hover p {
+    color: var(--text-primary-color);
+}
+
+.skillcard ul li:hover img {
+    transform: scale(1.3);
+}
+
+.skillcard ul li img {
+    transition: transform .2s ease-in-out;
+}
+
+.skillcard ul li p {
+    color: var(--text-secondary-color);
+    margin-left: 1rem;
+    transition: color 0.2s ease-in-out;
+}
+
+
+
+
+.skillcardheader {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0 0.5rem 0;
+}

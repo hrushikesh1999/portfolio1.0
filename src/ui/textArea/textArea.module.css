@@ -1,0 +1,11 @@
+.textarea {
+    overflow-y: auto;
+    box-sizing: border-box;
+    appearance: none;
+    border: none;
+    outline: none;
+    border-bottom: .2em solid var(--outlined-border);
+    border-radius: .2em .2em 0 0;
+    padding: .7em;
+    background: rgba(255, 255, 255, 0.733);
+}

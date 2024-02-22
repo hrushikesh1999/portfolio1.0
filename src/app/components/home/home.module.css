@@ -1,0 +1,25 @@
+.home {
+    /* margin-top: 8rem; */
+    min-height: calc(90vh - 8rem);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.myname {
+    font-size: calc(50px + 7vw);
+    /* font-weight: 700; */
+    /* margin-top: 1rem; */
+    margin-left: -8px;
+}
+
+.shortdesc {
+    margin-top: 1rem;
+    color: var(--text-secondary-color);
+}
+
+.navlinks {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 10px;
+}
