@@ -18,7 +18,7 @@ const Experience = () => {
                             <div className={styles.content}>
                                 <div className={styles.containerheader}>
                                     <h4>{exp.title}</h4>
-                                    <div>{exp.from} - {exp.to}</div>
+                                    <h6>{exp.from} - {exp.to}</h6>
                                 </div>
                                 <p>{exp.description}</p>
                                 <div className={styles.tags}>

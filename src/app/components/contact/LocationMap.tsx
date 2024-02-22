@@ -50,9 +50,11 @@ const LocationMap = () => {
 
         const mapSize = initialMap.getSize()!;
         if (!mapElement) return
-        const width = mapElement.current?.offsetWidth!
-        const height = mapElement.current?.offsetHeight!
-        initialMap.getView().centerOn(pos, mapSize, [width / 4, height / 2])
+        if (window.innerWidth > 768) {
+            const width = mapElement.current?.offsetWidth!
+            const height = mapElement.current?.offsetHeight!
+            initialMap.getView().centerOn(pos, mapSize, [width / 4, height / 2])
+        }
 
         setMap(initialMap)
 
