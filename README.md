@@ -14,6 +14,8 @@ This is a personal portfolio website built with Next.js and TypeScript. All styl
 ## Showcase
 
 Check out my portfolio: [https://hrushikesh1999.vercel.app/](https://hrushikesh1999.vercel.app/)
+![Pic1](support_shots/s1.png)  
+![Pic2](support_shots/s2.png)
 
 ## Tech Stack
 - [Next.js](https://nextjs.org/) (React framework)
