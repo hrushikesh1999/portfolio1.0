@@ -31,9 +31,9 @@ const Home = () => {
                     <Button variant="outlined" onClick={() => scrollToSection(contactRef)}>
                         Reach out to me!
                     </Button>
-                    {/* <Button variant="outlined">
-                        See my resume
-                    </Button> */}
+                    <Button variant="outlined" onClick={() => window.open("/resume.pdf", "_blank")}>
+                        📄view resume
+                    </Button>
                 </div>
             </div>
         </div>

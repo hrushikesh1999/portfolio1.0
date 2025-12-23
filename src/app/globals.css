@@ -9,9 +9,17 @@
   --background-day: rgba(255, 255, 255, 0.4);
   --map-filter-day: none;
 
-  --chip-bg-color-day: rgb(234, 234, 234);
+  --chip-bg-color-day: #ffe7c7;
+  --chip-text-color-day: #e26000;
+  --chip-border-color-day: rgba(239, 108, 0, 0.25);
+  --chip-hover-bg-day: #ffd9a5;
 
   --icon-color-day: #4F4F4F;
+
+  --btn-hover-background-day: rgba(255, 255, 255, 0.45);
+  --btn-hover-border-day: rgba(255, 255, 255, 0.55);
+  --btn-active-background-day: rgba(255, 255, 255, 0.95);
+
 
   /* night */
   --primary-color-night: rgba(31, 32, 40, 0.7);
@@ -23,9 +31,17 @@
   --background-night: rgba(31, 32, 40, 0.7);
   --map-filter-night: brightness(0.6) invert(1) contrast(3) hue-rotate(300deg) saturate(0.7) brightness(0.7);
 
-  --chip-bg-color-night: rgb(78, 78, 78);
+  --chip-bg-color-night: rgba(255, 255, 255, 0.06);
+  --chip-text-color-night: #e3e3e3;
+  --chip-border-color-night: rgba(255, 255, 255, 0.15);
+  --chip-hover-bg-night: rgba(255, 255, 255, 0.12);
 
   --icon-color-night: rgb(255, 255, 255);
+
+  --btn-hover-background-night: rgba(255, 255, 255, 0.12);
+  --btn-hover-border-night: rgba(255, 255, 255, 0.2);
+  --btn-active-background-night: rgba(255, 255, 255, 0.18);
+
 
 
   --sidebar-width-lg: 250px;
@@ -33,7 +49,7 @@
 
   --btn-hover-blur: 7.9px;
   --btn-active-blur: 5.0px;
-  --btn-hover-background: rgba(255, 255, 255, 0.12);
+  /* --btn-hover-background: rgba(255, 255, 255, 0.12); */
 }
 
 ul {

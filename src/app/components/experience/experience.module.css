@@ -84,6 +84,87 @@
     margin-top: 0.5rem;
 }
 
+.stepperWrapper {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.stepperItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.stepperMarker {
+    display: flex;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+.stepperDotFilled {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--outlined-border);
+}
+
+.stepperDotHollow {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--outlined-border);
+}
+
+
+/* ROLE PROGRESSION UI (Option B) */
+.roleProgressWrapper {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.roleRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.roleInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.roleInfo strong {
+    font-size: 14px;
+    color: var(--text-secondary-color);
+}
+
+.rolePeriod {
+    font-size: 10px;
+    color: var(--text-secondary-color);
+    margin-top: 2px;
+}
+
+
+/* horizontal line */
+.progressLine {
+    flex-grow: 1;
+    height: 2px;
+    background-color: var(--outlined-border);
+    margin-left: 6px;
+    border-radius: 4px;
+}
+
+.description {
+    margin-top: 1rem;
+    font-size: 14px;
+    color: var(--text-secondary-color);
+}
+
 @media (max-width: 768px) {
 
     /* Place the timelime to the left */
@@ -113,8 +194,11 @@
 
 .tags {
     margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
-.tags div {
+/* .tags div {
     margin: 0 0.1rem;
-}
+} */

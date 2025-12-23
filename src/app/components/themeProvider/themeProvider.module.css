@@ -24,8 +24,17 @@
     --outlined-hover-bg: var(--outlined-hover-bg-day);
     --map-filter: var(--map-filter-day);
     --background: var(--background-day);
-    --chip-bg-color: var(--chip-bg-color-day);
     --icon-color: var(--icon-color-day);
+
+    --chip-bg-color: var(--chip-bg-color-day);
+    --chip-text-color: var(--chip-text-color-day);
+    --chip-border-color: var(--chip-border-color-day);
+    --chip-hover-bg: var(--chip-hover-bg-day);
+
+    --btn-hover-background: var(--btn-hover-background-day);
+    --btn-hover-border: var(--btn-hover-border-day);
+    --btn-active-background: var(--btn-active-background-day);
+
 }
 
 .theme-dark {
@@ -36,6 +45,15 @@
     --outlined-hover-bg: var(--outlined-hover-bg-night);
     --map-filter: var(--map-filter-night);
     --background: var(--background-night);
-    --chip-bg-color: var(--chip-bg-color-night);
     --icon-color: var(--icon-color-night);
+
+    --chip-bg-color: var(--chip-bg-color-night);
+    --chip-text-color: var(--chip-text-color-night);
+    --chip-border-color: var(--chip-border-color-night);
+    --chip-hover-bg: var(--chip-hover-bg-night);
+
+    --btn-hover-background: var(--btn-hover-background-night);
+    --btn-hover-border: var(--btn-hover-border-night);
+    --btn-active-background: var(--btn-active-background-night);
+
 }
