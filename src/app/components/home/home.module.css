@@ -21,5 +21,14 @@
 .navlinks {
     margin-top: 1.5rem;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+}
+
+.resumeButton svg {
+    transition: transform var(--button-icon-zoom-duration) ease-in-out;
+}
+
+.resumeButton:hover svg {
+    transform: scale(var(--button-icon-zoom-scale));
 }

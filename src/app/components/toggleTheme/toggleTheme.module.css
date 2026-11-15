@@ -20,9 +20,9 @@
 }
 
 .toggleThemeBtn svg {
-    transition: transform .2s ease-in-out;
+    transition: transform var(--button-icon-zoom-duration) ease-in-out;
 }
 
 .toggleThemeBtn:hover svg {
-    transform: scale(1.1);
+    transform: scale(var(--button-icon-zoom-scale));
 }

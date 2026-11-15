@@ -9,8 +9,8 @@ type Props = {
 }
 
 const AccountLinks = ({ size = "md" }: Props) => {
-    const width = size === "md" ? "20" : "15"
-    const height = size === "md" ? "20" : "15"
+    const width = size === "md" ? "18" : "15"
+    const height = size === "md" ? "18" : "15"
     const accounts = [
         {
             url: "https://github.com/hrushikesh1999",
@@ -33,7 +33,7 @@ const AccountLinks = ({ size = "md" }: Props) => {
             {
                 accounts.map(a => (
                     <a key={a.label} href={a.url} target="_blank" aria-label={a.label}>
-                        <Button>
+                        <Button className={size === "md" ? styles.mediumButton : undefined}>
                             {a.icon}
                         </Button>
                     </a>

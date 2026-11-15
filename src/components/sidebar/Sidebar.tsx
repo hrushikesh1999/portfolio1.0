@@ -7,10 +7,14 @@ import { useScroll } from "@/context/ScrollContext";
 import { CONTACT, EXPERIENCE, HOME, SKILLS } from "@/constant";
 import { Section } from "@/types/section";
 import HSvg from "../hSvg/HSvg";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import buttonStyles from "@/ui/button/button.module.css";
 
 
 
 const Sidebar = () => {
+    const isHome = usePathname() === "/";
     const { isSidebarOpen, setisSidebarOpen } = useLayout()
     const { homeRef, experienceRef, skillsRef, contactRef, scrollToSection, activeSection } = useScroll();
     const sections: Array<Section> = [
@@ -54,9 +58,20 @@ const Sidebar = () => {
                             sections.map(section => (
                                 <li
                                     key={section.id}
-                                    className={`${styles.navItem} ${activeSection === section.id ? styles['navitem-active'] : ""}`}
-                                    onClick={() => handleSectionClick(section)}>
-                                    <Button active={activeSection === section.id}>{section.name}</Button>
+                                    className={`${styles.navItem} ${isHome && activeSection === section.id ? styles['navitem-active'] : ""}`}>
+                                    {isHome ? (
+                                        <Button
+                                            active={activeSection === section.id}
+                                            aria-current={activeSection === section.id ? 'location' : undefined}
+                                            onClick={() => handleSectionClick(section)}
+                                        >
+                                            {section.name}
+                                        </Button>
+                                    ) : (
+                                        <Link href={`/#${section.id}`} className={`${buttonStyles.btn} ${buttonStyles["btn-text"]} ${styles.navLink}`} onClick={() => setisSidebarOpen(false)}>
+                                            {section.name}
+                                        </Link>
+                                    )}
                                 </li>
                             ))
                         }

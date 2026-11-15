@@ -31,11 +31,12 @@
 }
 
 .btn-outlined {
-    color: var(--text-primary-color);
-    background-color: var(--button-fog);
-    background-image:
+    --outlined-sheen:
         radial-gradient(ellipse at 18% 12%, var(--button-sheen), transparent 63%),
         radial-gradient(ellipse at 83% 86%, var(--button-sheen), transparent 57%);
+    color: var(--text-primary-color);
+    background-color: var(--button-fog);
+    background-image: var(--outlined-sheen);
     border: 1px solid var(--button-edge);
     backdrop-filter: blur(16px) saturate(110%);
     -webkit-backdrop-filter: blur(16px) saturate(110%);
@@ -51,6 +52,10 @@
 }
 
 .btn-outlined:hover {
+    background-color: var(--button-fog);
+    background-image:
+        linear-gradient(var(--btn-hover-background), var(--btn-hover-background)),
+        var(--outlined-sheen);
     backdrop-filter: blur(20px) saturate(110%);
     -webkit-backdrop-filter: blur(20px) saturate(110%);
 }
