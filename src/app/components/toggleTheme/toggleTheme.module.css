@@ -1,19 +1,28 @@
 .toggleThemeBtn {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    background:
+        radial-gradient(ellipse at 18% 12%, var(--button-sheen), transparent 63%),
+        radial-gradient(ellipse at 83% 86%, var(--button-sheen), transparent 57%),
+        var(--button-fog);
+    border-radius: 9px;
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--button-edge);
+    box-shadow: inset 0 1px 1px var(--button-sheen), 0 3px 14px rgba(0, 0, 0, 0.06);
 
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: none;
 }
 
+.toggleThemeBtn button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 .toggleThemeBtn svg {
-    transition: transform .2s ease-in-out;
+    transition: transform var(--button-icon-zoom-duration) ease-in-out;
 }
 
 .toggleThemeBtn:hover svg {
-    transform: scale(1.1);
+    transform: scale(var(--button-icon-zoom-scale));
 }

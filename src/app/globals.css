@@ -9,10 +9,10 @@
   --background-day: rgba(255, 255, 255, 0.4);
   --map-filter-day: none;
 
-  --chip-bg-color-day: #ffe7c7;
-  --chip-text-color-day: #e26000;
-  --chip-border-color-day: rgba(239, 108, 0, 0.25);
-  --chip-hover-bg-day: #ffd9a5;
+  --chip-bg-color-day: #edf2e9;
+  --chip-text-color-day: #3f5547;
+  --chip-border-color-day: rgba(83, 112, 91, 0.25);
+  --chip-hover-bg-day: #dfe9dc;
 
   --icon-color-day: #4F4F4F;
 
@@ -48,6 +48,8 @@
   --sidebar-width-md: 150px;
 
   --btn-hover-blur: 7.9px;
+  --button-icon-zoom-duration: 200ms;
+  --button-icon-zoom-scale: 1.1;
   --btn-active-blur: 5.0px;
   /* --btn-hover-background: rgba(255, 255, 255, 0.12); */
 }
@@ -131,6 +133,12 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 3rem;
+  }
 }
 
 

@@ -1,30 +1,34 @@
 import styles from "./page.module.css";
 import CanvasTheme from "@/components/canvasTheme/CanvasTheme";
+import SkyClouds from "./components/skyClouds/SkyClouds";
 import Home from "./components/home/Home"
 import Contact from "./components/contact/Contact";
 import Experience from "./components/experience/Experience";
 import Skills from "./components/skills/Skills";
 import ToggleTheme from "./components/toggleTheme/ToggleTheme";
+import { CONTACT, EXPERIENCE, HOME, SKILLS } from "@/constant";
 
 export default function App() {
 
   return (
     <main className={styles.main}>
 
-      <div className={styles.section}>
-        <CanvasTheme />
+      <div id={HOME} className={styles.section}>
+        <SkyClouds>
+          <CanvasTheme />
+        </SkyClouds>
         <Home />
       </div>
 
-      <div className={styles.section}>
+      <div id={EXPERIENCE} className={styles.section}>
         <Experience />
       </div>
 
-      <div className={styles.section}>
+      <div id={SKILLS} className={styles.section}>
         <Skills />
       </div>
 
-      <div className={styles.section}>
+      <div id={CONTACT} className={styles.section}>
         <Contact />
       </div>
 

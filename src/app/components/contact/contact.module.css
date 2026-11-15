@@ -11,8 +11,7 @@
     padding: 1rem 2rem 2rem 2rem;
 
     background: var(--background);
-    border-end-end-radius: 3px;
-    border-top-right-radius: 3px;
+    border-radius: 0 18px 18px 0;
     /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
     backdrop-filter: blur(11.9px);
     -webkit-backdrop-filter: blur(11.9px);
@@ -25,8 +24,7 @@
         width: 100%;
         margin-top: 2rem;
         background: var(--background);
-        border-end-end-radius: 3px;
-        border-top-right-radius: 3px;
+        border-radius: 18px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(11.9px);
         -webkit-backdrop-filter: blur(11.9px);

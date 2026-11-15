@@ -5,17 +5,26 @@
 }
 
 .acntlinks a {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background:
+        radial-gradient(ellipse at 18% 12%, var(--button-sheen), transparent 63%),
+        radial-gradient(ellipse at 83% 86%, var(--button-sheen), transparent 57%),
+        var(--button-fog);
+    border-radius: 9px;
+    backdrop-filter: blur(16px) saturate(110%);
+    -webkit-backdrop-filter: blur(16px) saturate(110%);
+    border: 1px solid var(--button-edge);
+    box-shadow: inset 0 1px 1px var(--button-sheen), 0 3px 14px rgba(0, 0, 0, 0.06);
+}
+
+.mediumButton {
+    min-width: 42px;
+    min-height: 34px;
 }
 
 .acntlinks a button svg {
-    transition: transform .2s ease-in-out;
+    transition: transform var(--button-icon-zoom-duration) ease-in-out;
 }
 
 .acntlinks a:hover button svg {
-    transform: scale(1.1);
+    transform: scale(var(--button-icon-zoom-scale));
 }

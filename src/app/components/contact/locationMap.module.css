@@ -3,7 +3,7 @@
     height: 70vh;
     overflow: hidden;
     filter: var(--map-filter);
-    border-radius: 3px;
+    border-radius: 18px;
 
     background: var(--background);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

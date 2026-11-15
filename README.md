@@ -45,6 +45,8 @@ public/
 ```
 
 ## Getting Started
+Use Node.js 26 LTS. The `.nvmrc` file pins the local development version to 26.13.1.
+
 1. **Install dependencies:**
 	 ```bash
 	 npm install

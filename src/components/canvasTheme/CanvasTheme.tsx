@@ -23,69 +23,43 @@ const CanvasTheme = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const drawSun = () => {
-            // Clear the entire canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const { x, y } = position;
+        const radius = isSunSet ? moonSize : sunSize;
+        if (radius <= 0) return;
 
-            // Draw the sun with a natural evening glow effect
-            const gradient = ctx.createRadialGradient(
-                position.x,
-                position.y,
-                5,
-                position.x,
-                position.y,
-                sunSize
-            );
-            gradient.addColorStop(0, 'rgba(255, 165, 0, 1)'); // Sun color
-            gradient.addColorStop(0.5, 'rgba(255, 165, 0, 0.7)'); // Transparent glow
-            gradient.addColorStop(1, 'rgba(255, 165, 0, 0)'); // Fully transparent
+        const haloRadius = radius * 2.65;
+        const halo = ctx.createRadialGradient(x, y, radius * 0.92, x, y, haloRadius);
+        halo.addColorStop(0, isSunSet ? 'rgba(220, 225, 234, 0.28)' : 'rgba(255, 239, 188, 0.32)');
+        halo.addColorStop(0.42, isSunSet ? 'rgba(220, 225, 234, 0.12)' : 'rgba(255, 239, 188, 0.14)');
+        halo.addColorStop(0.75, isSunSet ? 'rgba(220, 225, 234, 0.03)' : 'rgba(255, 239, 188, 0.04)');
+        halo.addColorStop(1, 'transparent');
+        ctx.fillStyle = halo;
+        ctx.fillRect(x - haloRadius, y - haloRadius, haloRadius * 2, haloRadius * 2);
 
-            ctx.beginPath();
-            ctx.arc(position.x, position.y, sunSize, 0, 2 * Math.PI);
-            ctx.fillStyle = gradient;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = 'rgba(255, 165, 0, 0.7)'; // Glow color
-            ctx.shadowOffsetX = 0;
-            ctx.shadowOffsetY = 0;
-            ctx.fill();
-            ctx.closePath();
-        };
-
-        const drawMoon = () => {
-            if (isSunSet && moonSize > 0) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                // Draw moon with craters
-                ctx.beginPath();
-                ctx.arc(position.x, position.y, moonSize, 0, 2 * Math.PI);
-                ctx.fillStyle = 'rgba(255, 255, 255, 1)'; // White fill for the moon
-                ctx.fill();
-                ctx.closePath();
-
-                // Add craters by drawing smaller circles within the moon's diameter
-                const numCraters = 3;
-                const minCraterSize = 2;
-                const maxCraterSize = 10;
-
-                for (let i = 0; i < numCraters; i++) {
-                    const craterX = position.x + (Math.random() - 0.5) * moonSize; // Random X within moon's diameter
-                    const craterY = position.y + (Math.random() - 0.5) * moonSize; // Random Y within moon's diameter
-                    const craterSize = Math.random() * (maxCraterSize - minCraterSize) + minCraterSize;
-                    const craterOpacity = Math.random() * 0.6; // Varying opacities
-
-                    ctx.beginPath();
-                    ctx.arc(craterX, craterY, craterSize, 0, 2 * Math.PI);
-                    ctx.fillStyle = `rgba(0, 0, 0, ${craterOpacity})`; // Black color for craters
-                    ctx.fill();
-                    ctx.closePath();
-                }
-            }
-        };
+        const surface = ctx.createRadialGradient(
+            x - radius * 0.3, y - radius * 0.35, 0,
+            x, y, radius
+        );
+        surface.addColorStop(0, isSunSet ? '#fafaf7' : '#fffef5');
+        surface.addColorStop(0.62, isSunSet ? '#e9ebed' : '#fff3c8');
+        surface.addColorStop(1, isSunSet ? '#cdd2d8' : '#f5df9d');
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = surface;
+        ctx.fill();
 
         if (isSunSet) {
-            drawMoon()
-        } else {
-            drawSun();
+            for (let i = 0; i < 3; i++) {
+                const craterX = x + (Math.random() - 0.5) * radius;
+                const craterY = y + (Math.random() - 0.5) * radius;
+                const craterSize = 2 + Math.random() * 8;
+                const craterOpacity = Math.random() * 0.6;
+
+                ctx.beginPath();
+                ctx.arc(craterX, craterY, craterSize, 0, 2 * Math.PI);
+                ctx.fillStyle = `rgba(0, 0, 0, ${craterOpacity})`;
+                ctx.fill();
+            }
         }
     }, [canvasRef, position, sunSize, isSunSet, moonSize]);
 

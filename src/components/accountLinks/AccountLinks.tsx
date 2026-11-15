@@ -9,8 +9,8 @@ type Props = {
 }
 
 const AccountLinks = ({ size = "md" }: Props) => {
-    const width = size === "md" ? "25" : "15"
-    const height = size === "md" ? "25" : "15"
+    const width = size === "md" ? "18" : "15"
+    const height = size === "md" ? "18" : "15"
     const accounts = [
         {
             url: "https://github.com/hrushikesh1999",
@@ -18,7 +18,7 @@ const AccountLinks = ({ size = "md" }: Props) => {
             icon: <GithubIcon width={width} height={height} />,
         },
         {
-            url: "https://www.linkedin.com/in/hrushikesh-aavula-6629b419b/",
+            url: "https://www.linkedin.com/in/hrushikesh-aavula/",
             label: "LinkedIn Account",
             icon: <LinkedinIcon width={width} height={height} />,
         },
@@ -33,7 +33,7 @@ const AccountLinks = ({ size = "md" }: Props) => {
             {
                 accounts.map(a => (
                     <a key={a.label} href={a.url} target="_blank" aria-label={a.label}>
-                        <Button>
+                        <Button className={size === "md" ? styles.mediumButton : undefined}>
                             {a.icon}
                         </Button>
                     </a>
