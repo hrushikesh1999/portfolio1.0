@@ -1,11 +1,17 @@
 .sidebar {
     position: fixed;
     height: 100%;
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.4px);
-    -webkit-backdrop-filter: blur(3.4px);
-    border: 1px solid rgba(255, 255, 255, 0.19);
+    background-color: var(--sidebar-glass);
+    background-image:
+        radial-gradient(ellipse 145% 62% at 0% 0%, var(--button-sheen), transparent 100%),
+        radial-gradient(ellipse 160% 60% at 110% 47%, var(--button-sheen), transparent 100%),
+        radial-gradient(ellipse 145% 58% at 0% 100%, var(--button-sheen), transparent 100%),
+        linear-gradient(155deg, var(--button-fog), transparent 48%, var(--button-fog));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 8px 0 36px rgba(0, 0, 0, 0.065);
+    -webkit-backdrop-filter: blur(18px) saturate(115%);
+    backdrop-filter: blur(18px) saturate(115%);
+    border-inline-end: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 0 1.25rem 1.25rem 0;
     z-index: 3;
     touch-action: none;
 }
@@ -36,9 +42,10 @@
         width: 100%;
         left: -100%;
         transition: left 0.3s ease;
-        background: rgba(255, 255, 255, 0.49);
-        backdrop-filter: blur(11.8px);
-        -webkit-backdrop-filter: blur(11.8px);
+        background-color: var(--sidebar-glass-mobile);
+        border-radius: 0;
+        -webkit-backdrop-filter: blur(22px) saturate(115%);
+        backdrop-filter: blur(22px) saturate(115%);
     }
 
     .sidebar.open {
@@ -70,11 +77,30 @@
 }
 
 
+.navItem button:hover,
+.navitem-active button {
+    background-image:
+        radial-gradient(ellipse at 18% 12%, var(--button-sheen), transparent 63%),
+        radial-gradient(ellipse at 83% 86%, var(--button-sheen), transparent 57%);
+}
+
 .navItem button {
     width: 100%;
     font-weight: 500;
 }
 
-/* .navItem {}
+.navitem-active button {
+    background-color: var(--button-fog);
+    border-color: var(--button-edge);
+    box-shadow: inset 0 1px 1px var(--button-sheen), 0 3px 14px rgba(0, 0, 0, 0.06);
+}
 
-.navitem-active {} */
+.navItem button:hover {
+    background-color: var(--btn-hover-background);
+    border-color: var(--btn-hover-border);
+    box-shadow: inset 0 1px 2px var(--button-sheen), 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.navItem button:active {
+    background-color: var(--btn-active-background);
+}

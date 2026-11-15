@@ -1,0 +1,62 @@
+.clouds {
+    --cloud-highlight: #fff9e9;
+    --cloud-mid: #e5e8e8;
+    --cloud-shadow: #9faebd;
+    position: absolute;
+    inset: 0 0 auto;
+    height: clamp(10rem, 18vw, 16rem);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.night {
+    --cloud-highlight: #aebbd1;
+    --cloud-mid: #77869e;
+    --cloud-shadow: #4f596b;
+}
+
+.cloud,
+.foregroundCloud {
+    position: absolute;
+    -webkit-mask: url("../../../assets/images/clouds.png") center / 100% 100% no-repeat;
+    mask: url("../../../assets/images/clouds.png") center / 100% 100% no-repeat;
+}
+
+.cloud {
+    inset: -35% auto auto -9%;
+    width: 49%;
+    height: 123%;
+    background: linear-gradient(170deg, var(--cloud-highlight) 25%, var(--cloud-mid) 53%, var(--cloud-shadow) 83%);
+}
+
+.foregroundCloud {
+    top: -0.75rem;
+    right: -5rem;
+    width: clamp(14rem, 22vw, 21rem);
+    height: 7rem;
+    background: linear-gradient(166deg, var(--cloud-highlight) 28%, var(--cloud-mid) 59%, var(--cloud-shadow) 92%);
+    transform: rotate(-7deg);
+}
+
+.cloud:nth-child(2) {
+    inset: -9% auto auto 25%;
+    width: 47%;
+    height: 97%;
+    background: linear-gradient(153deg, var(--cloud-highlight) 12%, var(--cloud-mid) 39%, var(--cloud-shadow) 69%);
+    transform: scaleX(-1) rotate(-5deg);
+    opacity: .75;
+}
+
+.cloud:nth-child(3) {
+    inset: -28% -8% auto auto;
+    width: 49%;
+    height: 125%;
+    background: linear-gradient(194deg, var(--cloud-highlight) 37%, var(--cloud-mid) 59%, var(--cloud-shadow) 92%);
+    transform: rotate(4deg);
+}
+
+@media (max-width: 600px) {
+    .cloud { width: 65%; margin-left: -10%; }
+    .cloud:nth-child(2) { width: 62%; }
+    .cloud:nth-child(3) { width: 60%; right: -13%; }
+}

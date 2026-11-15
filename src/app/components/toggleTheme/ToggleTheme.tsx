@@ -57,7 +57,7 @@ const ToggleTheme = () => {
                     clearInterval(toggleInterval)
                     setIsToggling(false)
                 }
-            }, 15);
+            }, isSunSet ? 15 : 28);
         }
 
         return () => {

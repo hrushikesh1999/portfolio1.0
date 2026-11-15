@@ -9,10 +9,10 @@
   --background-day: rgba(255, 255, 255, 0.4);
   --map-filter-day: none;
 
-  --chip-bg-color-day: #ffe7c7;
-  --chip-text-color-day: #e26000;
-  --chip-border-color-day: rgba(239, 108, 0, 0.25);
-  --chip-hover-bg-day: #ffd9a5;
+  --chip-bg-color-day: #edf2e9;
+  --chip-text-color-day: #3f5547;
+  --chip-border-color-day: rgba(83, 112, 91, 0.25);
+  --chip-hover-bg-day: #dfe9dc;
 
   --icon-color-day: #4F4F4F;
 

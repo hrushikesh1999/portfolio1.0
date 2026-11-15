@@ -17,6 +17,11 @@
 }
 
 .theme-light {
+    --button-fog: rgba(255, 252, 248, 0.28);
+    --button-sheen: rgba(255, 255, 255, 0.34);
+    --button-edge: rgba(255, 255, 255, 0.48);
+    --sidebar-glass: rgba(255, 252, 250, 0.23);
+    --sidebar-glass-mobile: rgba(249, 246, 252, 0.73);
     --primary-color: var(--primary-color-day);
     --text-primary-color: var(--text-primary-color-day);
     --text-secondary-color: var(--text-secondary-color-day);
@@ -38,6 +43,11 @@
 }
 
 .theme-dark {
+    --button-fog: rgba(213, 221, 237, 0.07);
+    --button-sheen: rgba(235, 242, 255, 0.09);
+    --button-edge: rgba(227, 235, 250, 0.18);
+    --sidebar-glass: rgba(36, 36, 40, 0.32);
+    --sidebar-glass-mobile: rgba(32, 32, 36, 0.79);
     --primary-color: var(--primary-color-night);
     --text-primary-color: var(--text-primary-color-night);
     --text-secondary-color: var(--text-secondary-color-night);
