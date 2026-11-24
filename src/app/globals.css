@@ -7,7 +7,6 @@
 
   --outlined-border-day: rgba(55, 71, 79, 0.35);
   --background-day: rgba(255, 255, 255, 0.4);
-  --map-filter-day: none;
 
   --chip-bg-color-day: #edf2e9;
   --chip-text-color-day: #3f5547;
@@ -29,7 +28,6 @@
 
   --outlined-border-night: rgba(77, 77, 77, 0.7);
   --background-night: rgba(31, 32, 40, 0.7);
-  --map-filter-night: brightness(0.6) invert(1) contrast(3) hue-rotate(300deg) saturate(0.7) brightness(0.7);
 
   --chip-bg-color-night: rgba(255, 255, 255, 0.06);
   --chip-text-color-night: #e3e3e3;
@@ -44,8 +42,8 @@
 
 
 
-  --sidebar-width-lg: 250px;
-  --sidebar-width-md: 150px;
+  --sidebar-width-lg: 220px;
+  --sidebar-width-md: 140px;
 
   --btn-hover-blur: 7.9px;
   --button-icon-zoom-duration: 200ms;

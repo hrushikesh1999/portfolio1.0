@@ -10,6 +10,10 @@
   margin: 7rem 0px 7rem 0px;
 }
 
+.homeSection {
+  margin-top: clamp(2.5rem, 7svh, 4.5rem);
+}
+
 .toggleTheme {
   position: fixed;
   right: 0;

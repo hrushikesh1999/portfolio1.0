@@ -17,134 +17,28 @@ import geoserver from "../../../assets/images/geoserver.png";
 import openlayers from "../../../assets/images/openlayers.png";
 import mongodb from "../../../assets/images/mongodb.png";
 import postgresql from "../../../assets/images/postgresql.png";
-import { SkillListItem } from "@/types/skill";
+import type { Skill } from "@/types/skill";
 
-const skillList: SkillListItem[] = [
-    {
-        title: "Web Development",
-        items: [
-            {
-                name: "Html",
-                image: html,
-                alt: "html icon",
-            },
-            {
-                name: "React js",
-                image: react,
-                alt: "react icon",
-            },
-            {
-                name: "Next js",
-                image: nextjs,
-                alt: "nextjs icon",
-            },
-            {
-                name: "Redux",
-                image: redux,
-                alt: "redux icon",
-            },
-            {
-                name: "Node js",
-                image: node,
-                alt: "node icon",
-            },
-        ],
-    },
-    {
-        title: "Web Design",
-        items: [
-            {
-                name: "Css",
-                image: css,
-                alt: "css icon",
-            },
-            {
-                name: "Sass",
-                image: sass,
-                alt: "sass icon",
-            },
-            {
-                name: "Material UI",
-                image: mui,
-                alt: "material ui icon",
-            },
-            {
-                name: "Reactstrap",
-                image: reactstrap,
-                alt: "reactstrap icon",
-            },
-            {
-                name: "Bootstrap",
-                image: bootstrap,
-                alt: "bootstrap icon",
-            },
-        ],
-    },
-    {
-        title: "Programming",
-        items: [
-            {
-                name: "Javascript",
-                image: javascript,
-                alt: "javascript icon",
-            },
-            {
-                name: "Typescript",
-                image: typescript,
-                alt: "typescript icon",
-            },
-            {
-                name: "Python",
-                image: python,
-                alt: "python icon",
-            },
-        ],
-    },
-    {
-        title: "GIS",
-        items: [
-            {
-                name: "Geoserver",
-                image: geoserver,
-                alt: "geoserver icon",
-            },
-            {
-                name: "Openlayers",
-                image: openlayers,
-                alt: "openlayers icon",
-            },
-        ],
-    },
-    {
-        title: "DB",
-        items: [
-            {
-                name: "MongoDB",
-                image: mongodb,
-                alt: "mongodb icon",
-            },
-            {
-                name: "PostgreSQL",
-                image: postgresql,
-                alt: "postgre sql icon",
-            },
-        ],
-    },
-    {
-        title: "Version Control",
-        items: [
-            {
-                name: "Git",
-                image: git,
-                alt: "git icon",
-            },
-            {
-                name: "Github",
-                image: github,
-                alt: "github icon",
-            },
-        ],
-    },
+const skillList: Skill[] = [
+    { name: "Html", image: html, accent: "#e34f26" },
+    { name: "React js", image: react, accent: "#61dafb" },
+    { name: "Next js", image: nextjs, accent: "#8a8a8a" },
+    { name: "Redux", image: redux, accent: "#764abc" },
+    { name: "Node js", image: node, accent: "#68a063" },
+    { name: "Css", image: css, accent: "#1572b6" },
+    { name: "Sass", image: sass, accent: "#cc6699" },
+    { name: "Material UI", image: mui, accent: "#007fff" },
+    { name: "Reactstrap", image: reactstrap, accent: "#61dafb" },
+    { name: "Bootstrap", image: bootstrap, accent: "#7952b3" },
+    { name: "Javascript", image: javascript, accent: "#f7df1e" },
+    { name: "Typescript", image: typescript, accent: "#3178c6" },
+    { name: "Python", image: python, accent: "#3776ab" },
+    { name: "Geoserver", image: geoserver, accent: "#55a346" },
+    { name: "Openlayers", image: openlayers, accent: "#1f9fb3" },
+    { name: "MongoDB", image: mongodb, accent: "#47a248" },
+    { name: "PostgreSQL", image: postgresql, accent: "#336791" },
+    { name: "Git", image: git, accent: "#f05032" },
+    { name: "Github", image: github, accent: "#8a8a8a" },
 ];
 
 export default skillList;

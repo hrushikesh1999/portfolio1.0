@@ -27,16 +27,6 @@
     align-items: center;
 }
 
-.sidebarfooter {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.copyrightText {
-    font-size: 12px;
-}
-
 @media (max-width: 768px) {
     .sidebar {
         width: 100%;

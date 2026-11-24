@@ -1,62 +1,136 @@
+@property --hero-cloud-light {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #f7eddf;
+}
+
+@property --hero-cloud-tone {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: #d8cdeb;
+}
+
 .clouds {
-    --cloud-highlight: #fff9e9;
-    --cloud-mid: #e5e8e8;
-    --cloud-shadow: #9faebd;
+    --hero-cloud-light: color-mix(in srgb, #fff9e9, var(--hero-accent) 24%);
+    --hero-cloud-tone: var(--hero-accent-end);
     position: absolute;
-    inset: 0 0 auto;
-    height: clamp(10rem, 18vw, 16rem);
-    overflow: hidden;
     pointer-events: none;
+    transition: opacity 650ms ease, --hero-cloud-light 650ms ease, --hero-cloud-tone 650ms ease;
 }
 
 .night {
-    --cloud-highlight: #aebbd1;
-    --cloud-mid: #77869e;
-    --cloud-shadow: #4f596b;
+    --hero-cloud-light: #8291a7;
+    --hero-cloud-tone: #515e73;
 }
 
-.cloud,
-.foregroundCloud {
+.distant {
+    inset: 0;
+}
+
+.cloudTexture,
+.haze {
     position: absolute;
-    -webkit-mask: url("../../../assets/images/clouds.png") center / 100% 100% no-repeat;
-    mask: url("../../../assets/images/clouds.png") center / 100% 100% no-repeat;
+    animation: cloud-drift var(--drift-duration) ease-in-out var(--drift-delay, 0s) infinite alternate;
 }
 
-.cloud {
-    inset: -35% auto auto -9%;
-    width: 49%;
-    height: 123%;
-    background: linear-gradient(170deg, var(--cloud-highlight) 25%, var(--cloud-mid) 53%, var(--cloud-shadow) 83%);
+.cloudTexture::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(165deg, var(--hero-cloud-light) 15%, var(--hero-cloud-tone) 85%);
+    mask: url("../../../assets/images/hero-cloud-mask.webp") center / 100% 100% no-repeat;
 }
 
-.foregroundCloud {
-    top: -0.75rem;
-    right: -5rem;
-    width: clamp(14rem, 22vw, 21rem);
-    height: 7rem;
-    background: linear-gradient(166deg, var(--cloud-highlight) 28%, var(--cloud-mid) 59%, var(--cloud-shadow) 92%);
-    transform: rotate(-7deg);
-}
-
-.cloud:nth-child(2) {
-    inset: -9% auto auto 25%;
+.distantWisp {
+    --drift-duration: 57s;
+    --drift-distance: 15%;
+    --drift-delay: -11s;
+    inset: 6% auto auto -7%;
     width: 47%;
-    height: 97%;
-    background: linear-gradient(153deg, var(--cloud-highlight) 12%, var(--cloud-mid) 39%, var(--cloud-shadow) 69%);
-    transform: scaleX(-1) rotate(-5deg);
-    opacity: .75;
+    height: 14%;
+    opacity: 0.46;
+    filter: blur(1.7px);
 }
 
-.cloud:nth-child(3) {
-    inset: -28% -8% auto auto;
-    width: 49%;
-    height: 125%;
-    background: linear-gradient(194deg, var(--cloud-highlight) 37%, var(--cloud-mid) 59%, var(--cloud-shadow) 92%);
-    transform: rotate(4deg);
+.distantWisp + .distantWisp {
+    --drift-duration: 69s;
+    --drift-distance: -19%;
+    --drift-delay: -30s;
+    inset: 37% -7% auto auto;
+    width: 39%;
+    height: 15%;
+    scale: -1 1;
+    opacity: 0.39;
+    filter: blur(2.2px);
+}
+
+.foreground {
+    inset: auto -9% -3% -11%;
+    height: 31%;
+    mask-image: radial-gradient(ellipse 68% 75% at 52% 58%, black 27%, transparent 97%);
+}
+
+.foregroundWisp {
+    --drift-duration: 43s;
+    --drift-distance: 13%;
+    --drift-delay: -15s;
+    inset: 7% auto auto -7%;
+    width: 82%;
+    height: 92%;
+    opacity: 0.51;
+    filter: blur(2.1px);
+}
+
+.foregroundWisp + .foregroundWisp {
+    --drift-duration: 51s;
+    --drift-distance: -11%;
+    --drift-delay: -33s;
+    inset: 24% -8% auto auto;
+    width: 78%;
+    height: 81%;
+    scale: -1 1;
+    opacity: 0.38;
+    filter: blur(3.1px);
+}
+
+.ambient {
+    inset: auto -9% -4% -9%;
+    height: 23%;
+}
+
+.haze {
+    --drift-duration: 81s;
+    --drift-distance: 6%;
+    --drift-delay: -26s;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 46% 46% at 40% 57%, color-mix(in srgb, var(--hero-cloud-light) 31%, transparent), transparent 96%),
+        radial-gradient(ellipse 41% 44% at 66% 61%, color-mix(in srgb, var(--hero-cloud-tone) 30%, transparent), transparent 96%);
+}
+
+@keyframes cloud-drift {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(var(--drift-distance));
+    }
 }
 
 @media (max-width: 600px) {
-    .cloud { width: 65%; margin-left: -10%; }
-    .cloud:nth-child(2) { width: 62%; }
-    .cloud:nth-child(3) { width: 60%; right: -13%; }
+    .foreground,
+    .ambient {
+        inset-inline: -6%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .clouds {
+        transition: none;
+    }
+
+    .cloudTexture,
+    .haze {
+        animation: none;
+    }
 }

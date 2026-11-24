@@ -1,204 +1,282 @@
-/* The actual timeline (the vertical ruler) */
-.timeline {
+.section {
+    --section-gap: clamp(1.5rem, min(4vw, 6svh), 3rem);
+    display: grid;
+    gap: var(--section-gap);
+}
+
+.sectionHeading > h3 {
+    margin-bottom: 0;
+}
+
+.album {
+    --panel-radius: 12px;
+    --glass-blur: blur(11.9px);
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    --binding-width: clamp(0.75rem, 1.6vw, 1.625rem);
+    --previous-edge: clamp(0.375rem, 0.85vw, 0.75rem);
+    --next-edge: clamp(0.875rem, 2.7vw, 2.375rem);
+    --gutter: max(calc(2 * var(--next-edge)), calc(var(--binding-width) + 2 * var(--previous-edge)));
+    container: experience-album / inline-size;
+    display: grid;
+    gap: clamp(0.375rem, 1.3vh, 0.875rem);
+    width: 100%;
+    max-width: 70rem;
+    margin-inline: auto;
+}
+
+.album:focus-visible,
+.edge:focus-visible {
+    outline: 2px solid var(--text-secondary-color);
+}
+
+.album:focus-visible {
+    outline-offset: 4px;
+    border-radius: var(--panel-radius);
+}
+
+.stage {
+    padding-inline: var(--gutter);
+}
+
+.pages {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
+    isolation: isolate;
 }
 
-/* The actual timeline (the vertical ruler) */
-.timeline::after {
-    content: '';
+.panel::before,
+.pageSlot[data-turning="true"] .panel::after,
+.edgeSurface,
+.binding {
+    background-color: var(--background);
+    border: 1px solid var(--button-edge);
+    box-shadow: inset 0 1px 1px var(--button-sheen), var(--glass-shadow);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+}
+
+.binding {
     position: absolute;
-    width: 2px;
-    background-color: var(--outlined-border);
-    top: 0;
-    bottom: 0;
-    margin-left: -3px;
+    inset-block: 0;
+    inset-inline-end: 100%;
+    width: var(--binding-width);
+    z-index: 5;
+    background-color: var(--sidebar-glass);
+    border-radius: var(--panel-radius) 3px 3px var(--panel-radius);
+    pointer-events: none;
 }
 
-/* Container around content */
-.container {
-    padding: 10px 40px 25px 40px;
-    position: relative;
-    background-color: inherit;
-    width: 80%;
-}
-
-.containerheader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-/* The circles on the timeline */
-.container::after {
-    content: '';
+.binding::before,
+.binding::after {
+    content: "";
     position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -17px;
-    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(42%, 7px);
+    aspect-ratio: 1;
+    border: 1px solid var(--outlined-border);
     border-radius: 50%;
-    z-index: 1;
-    border: 2px solid var(--outlined-border);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: var(--button-sheen);
 }
 
-/* Add arrows to the right container (pointing left) */
-.right::before {
-    content: " ";
-    height: 0;
-    position: absolute;
-    top: 22px;
-    width: 0;
-    z-index: 1;
-    left: 30px;
-    border: medium solid var(--background);
-    border-width: 10px 10px 10px 0;
-    border-color: transparent var(--background) transparent transparent;
-    backdrop-filter: blur(6.2px);
-    -webkit-backdrop-filter: blur(6.2px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+.binding::before { top: 16%; }
+.binding::after { bottom: 16%; }
+
+.pageSlot {
+    grid-area: 1 / 1;
+    display: grid;
+    min-width: 0;
+    visibility: hidden;
 }
 
-/* Fix the circle for containers on the right side */
-.right::after {
-    left: -16px;
+.pageSlot[data-visible="true"] {
+    z-index: 3;
+    visibility: visible;
 }
 
-/* The actual content */
-.content {
-    padding: 20px 30px;
+.panel {
     position: relative;
-    background: var(--background);
-    border-radius: 12px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6.2px);
-    -webkit-backdrop-filter: blur(6.2px);
-    /* border: 1px solid rgba(255, 255, 255, 1); */
+    display: grid;
+    min-width: 0;
 }
 
-.content p {
-    margin-top: 0.5rem;
+.panel::before,
+.pageSlot[data-turning="true"] .panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--panel-radius);
+    backface-visibility: hidden;
+    pointer-events: none;
 }
 
-.stepperWrapper {
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.pageSlot[data-turning="true"] {
+    z-index: 4;
+    visibility: visible;
+    pointer-events: none;
+    perspective: clamp(100rem, 210vw, 175rem);
+    perspective-origin: left center;
+    /* Only the edge beside the binding remains visible when a panel settles on the left. */
+    clip-path: inset(
+        calc(-1 * min(var(--section-gap), 0.375rem))
+        calc(-1 * var(--gutter))
+        -0.1875rem
+        calc(-1 * (var(--binding-width) + var(--previous-edge)))
+    );
 }
 
-.stepperItem {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
+.pageSlot[data-turning="true"] .panel {
+    transform-origin: left center;
+    transform-style: preserve-3d;
 }
 
-.stepperMarker {
+.pageSlot[data-turning="true"] .panel::after {
+    transform: rotateY(180deg);
+    background-color: var(--sidebar-glass);
+}
+
+.reflection {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--button-sheen);
+    border-radius: var(--panel-radius);
+    background: var(--button-sheen);
+    pointer-events: none;
+    backface-visibility: hidden;
+}
+
+.edge {
+    --depth: 1;
+    --edge-width: var(--next-edge);
+    --edge-offset: calc(var(--edge-width) * (var(--depth) - 1));
+    position: absolute;
+    inset-block: calc(var(--depth) * clamp(0.625rem, 2.6cqw, 1.875rem));
+    width: var(--edge-width);
+    z-index: calc(3 - var(--depth));
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+}
+
+.edge[data-depth="2"] { --depth: 2; }
+
+.edge[data-side="next"] {
+    inset-inline-start: calc(100% + var(--edge-offset));
+}
+
+.edge[data-side="previous"] {
+    --edge-width: var(--previous-edge);
+    inset-inline-end: calc(100% + var(--binding-width) + var(--edge-offset));
+}
+
+.edgeSurface {
+    position: absolute;
+    inset-block: 0;
+    pointer-events: none;
+    border-color: color-mix(in srgb, var(--button-edge) 70%, transparent);
+    transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+
+.edge[data-side="next"] .edgeSurface {
+    inset-inline: calc(-1 * var(--edge-offset) - 1px) calc(-1 * var(--edge-extension, 0px));
+    border-inline-start: 0;
+    border-radius: 0 var(--panel-radius) var(--panel-radius) 0;
+}
+
+.edge[data-side="previous"] .edgeSurface {
+    inset-inline: calc(-1 * var(--edge-extension, 0px)) calc(-1 * var(--edge-offset) - 1px);
+    border-inline-end: 0;
+    border-radius: var(--panel-radius) 0 0 var(--panel-radius);
+}
+
+.edge:focus-visible {
+    outline-offset: -2px;
+    border-radius: 6px;
+}
+
+@media (hover: hover) {
+    .edge[aria-disabled="false"]:hover .edgeSurface {
+        background-color: color-mix(in srgb, var(--background), var(--btn-hover-background));
+        box-shadow: inset 0 0 10px 2px var(--button-sheen), var(--glass-shadow);
+    }
+}
+
+.pagination {
     display: flex;
     justify-content: center;
-    margin-top: 3px;
 }
 
-.stepperDotFilled {
-    width: 10px;
-    height: 10px;
+.pagination .dot {
+    width: 24px;
+    min-height: 44px;
+    padding: 0;
     border-radius: 50%;
-    background-color: var(--outlined-border);
 }
 
-.stepperDotHollow {
-    width: 10px;
-    height: 10px;
+.pagination .dot:is(:hover, :active) {
+    background: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+.dot::before {
+    content: "";
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-    border: 2px solid var(--outlined-border);
+    background: var(--text-secondary-color);
+    opacity: 0.55;
+    transition: opacity 140ms ease, transform 140ms ease;
 }
 
-
-/* ROLE PROGRESSION UI (Option B) */
-.roleProgressWrapper {
-    margin-top: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.dot[aria-current="page"]::before {
+    background: var(--text-primary-color);
+    opacity: 1;
+    transform: scale(1.25);
 }
 
-.roleRow {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+.dot[aria-disabled="false"]:hover::before { opacity: 1; }
+
+.dot[aria-disabled="true"],
+.edge[aria-disabled="true"] { cursor: default; }
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
-.roleInfo {
-    display: flex;
-    flex-direction: column;
-}
-
-.roleInfo strong {
-    font-size: 14px;
-    color: var(--text-secondary-color);
-}
-
-.rolePeriod {
-    font-size: 10px;
-    color: var(--text-secondary-color);
-    margin-top: 2px;
-}
-
-
-/* horizontal line */
-.progressLine {
-    flex-grow: 1;
-    height: 2px;
-    background-color: var(--outlined-border);
-    margin-left: 6px;
-    border-radius: 4px;
-}
-
-.description {
-    margin-top: 1rem;
-    font-size: 14px;
-    color: var(--text-secondary-color);
-}
-
-@media (max-width: 768px) {
-
-    /* Place the timelime to the left */
-    .timeline::after {
-        left: 31px;
-    }
-
-    /* Full-width containers */
-    .container {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-    }
-
-    /* Make sure that all arrows are pointing leftwards */
-    .container::before {
-        left: 60px;
-    }
-
-    /* Make sure all circles are at the same spot */
-    .left::after, .right::after {
-        left: 15px;
+@media (max-width: 480px), (max-width: 768px) and (max-height: 410px) and (orientation: landscape) {
+    .album {
+        --binding-width: 0.4375rem;
+        --previous-edge: 0.25rem;
+        --next-edge: 0.5rem;
+        width: calc(100% + 2.5rem);
+        margin-inline: -1.25rem;
     }
 }
 
-
-
-.tags {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+@media (min-width: 480px) and (max-height: 410px) and (orientation: landscape) {
+    .section { --section-gap: 0.625rem; }
+    .album { gap: 0; }
+    .pagination .dot { min-height: 24px; }
 }
 
-/* .tags div {
-    margin: 0 0.1rem;
-} */
+@media (min-width: 480px) and (max-height: 350px) and (orientation: landscape) {
+    .section { --section-gap: 0.4375rem; }
+}
+
+@media (max-width: 360px) and (max-height: 600px) {
+    .section { --section-gap: 0.75rem; }
+    .album { gap: 0.1875rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .edgeSurface,
+    .dot::before { transition: none; }
+}

@@ -29,7 +29,6 @@
     --text-secondary-color: var(--text-secondary-color-day);
     --outlined-border: var(--outlined-border-day);
     --outlined-hover-bg: var(--outlined-hover-bg-day);
-    --map-filter: var(--map-filter-day);
     --background: var(--background-day);
     --icon-color: var(--icon-color-day);
 
@@ -57,7 +56,6 @@
     --text-secondary-color: var(--text-secondary-color-night);
     --outlined-border: var(--outlined-border-night);
     --outlined-hover-bg: var(--outlined-hover-bg-night);
-    --map-filter: var(--map-filter-night);
     --background: var(--background-night);
     --icon-color: var(--icon-color-night);
 

@@ -1,5 +1,340 @@
-.skillgrid {
+.skillLayout {
+    --tile-width: clamp(4.875rem, 7.75vw, 5.5rem);
+    --tile-gap: clamp(0.625rem, 1.1vw, 0.875rem);
+    --tile-columns: repeat(auto-fill, min(100%, var(--tile-width)));
+
+    display: grid;
+    grid-template-columns: var(--tile-columns);
+    column-gap: var(--tile-gap);
+    justify-content: center;
+    max-width: calc(7 * var(--tile-width) + 6 * var(--tile-gap));
+    margin-inline: auto;
+}
+
+.searchBar,
+.skillGrid,
+.emptyState {
+    grid-column: 1 / -1;
+    min-width: 0;
+}
+
+.searchBar {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem
+    align-items: center;
+    gap: 0.625rem;
+    min-height: 2.5rem;
+    margin-bottom: clamp(1.5rem, 2.25vw, 2rem);
+    padding: 0.25rem 0.875rem;
+    color: var(--text-primary-color);
+    background: radial-gradient(ellipse at 18% 0%, var(--button-sheen), transparent 72%), var(--background);
+    border: 1px solid var(--button-edge);
+    border-radius: 1.25rem;
+    -webkit-backdrop-filter: blur(var(--btn-hover-blur));
+    backdrop-filter: blur(var(--btn-hover-blur));
+    box-shadow: inset 0 1px 1px var(--button-sheen), 0 3px 14px rgba(0, 0, 0, 0.08);
+    transition: border-color 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+.searchBar:focus-within {
+    border-color: var(--project-link-color);
+    border-color: color-mix(in srgb, var(--project-link-color) 52%, var(--button-edge));
+    box-shadow: inset 0 1px 2px var(--button-sheen),
+        0 0 0 2px color-mix(in srgb, var(--project-link-color) 20%, transparent),
+        0 3px 14px rgba(0, 0, 0, 0.08);
+}
+
+.searchBar:focus-within .searchIcon {
+    color: var(--project-link-color);
+}
+
+.searchIcon {
+    position: relative;
+    flex: 0 0 0.75rem;
+    height: 0.75rem;
+    margin-inline-end: 0.25rem;
+    color: var(--text-secondary-color);
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+}
+
+.searchIcon::after {
+    content: "";
+    position: absolute;
+    top: 87%;
+    left: 85%;
+    width: 0.375rem;
+    height: 1.5px;
+    border-radius: 1px;
+    background: currentColor;
+    transform: rotate(45deg);
+    transform-origin: left center;
+}
+
+.searchField {
+    display: grid;
+    flex: 1;
+    min-width: 0;
+}
+
+.searchInput,
+.searchPlaceholder {
+    grid-area: 1 / 1;
+}
+
+.searchInput {
+    z-index: 1;
+    width: 100%;
+    min-width: 0;
+    min-height: 2.125rem;
+    appearance: none;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+}
+
+.searchInput::placeholder {
+    opacity: 0;
+}
+
+.searchPlaceholder {
+    display: none;
+    align-self: center;
+    padding-block: 0.25rem;
+    color: var(--text-secondary-color);
+    font-size: 0.8125rem;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    pointer-events: none;
+}
+
+.searchInput:placeholder-shown + .searchPlaceholder {
+    display: block;
+}
+
+.searchInput::-webkit-search-cancel-button {
+    display: none;
+}
+
+.searchBar .clearButton {
+    flex: 0 0 2rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.searchBar .clearButton:is(:hover, :active) {
+    background: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
+}
+
+.searchBar .clearButton:focus-visible {
+    outline: 2px solid var(--project-link-color);
+    outline-offset: 2px;
+}
+
+.clearIcon {
+    display: flex;
+    opacity: 0.82;
+    transition: opacity 160ms ease-out;
+}
+
+.clearButton:is(:hover, :active, :focus-visible) .clearIcon {
+    opacity: 1;
+}
+
+.skillGrid,
+.emptyState {
+    grid-row: 2;
+}
+
+.skillGrid {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: var(--tile-columns);
+    grid-template-columns: subgrid;
+    grid-auto-rows: calc(var(--tile-width) * 5 / 6);
+    gap: var(--tile-gap);
+    padding-block: 1.125rem 0.75rem;
+    align-self: start;
+}
+
+.skillGrid[data-empty] {
+    padding-block: 0;
+}
+
+.tile {
+    display: grid;
+    min-width: 0;
+    min-height: 0;
+    z-index: 1;
+}
+
+.tile[data-reflecting] {
+    z-index: 2;
+}
+
+.tile[data-exiting] {
+    z-index: 0;
+    pointer-events: none;
+}
+
+.tileBlock {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    border-radius: clamp(0.75rem, 1.75vw, 1.125rem);
+    transform-style: preserve-3d;
+}
+
+.tileBlock::before,
+.tileBlock::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    transform: translate3d(0, 4px, -0.625rem);
+}
+
+/* The offset layer gives the straight tile face a visible bottom edge. */
+.tileBlock::before {
+    background: linear-gradient(150deg, var(--button-sheen) 10%, transparent 50%),
+        linear-gradient(0deg, color-mix(in srgb, var(--skill-accent) 25%, var(--background)), var(--background));
+    border: 1px solid color-mix(in srgb, var(--skill-accent) 24%, var(--button-edge));
+    box-shadow: inset 0 -1px 2px var(--button-sheen), 0 7px 13px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 180ms ease-out;
+}
+
+.tileBlock::after {
+    box-shadow: 0 5px 17px color-mix(in srgb, var(--skill-accent) 37%, transparent);
+    opacity: 0.4;
+    transition: opacity 180ms ease-out;
+}
+
+.tileFace {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.125rem, 0.45vw, 0.25rem);
+    min-width: 0;
+    padding: 0.1875rem;
+    border: 1px solid var(--button-edge);
+    border-radius: inherit;
+    background: radial-gradient(ellipse at 18% 0%, var(--button-sheen), transparent 60%),
+        radial-gradient(ellipse at 52% 112%, color-mix(in srgb, var(--skill-accent) 17%, transparent), transparent 69%),
+        var(--background);
+    box-shadow: inset 0 1px 2px var(--button-sheen), inset 0 -2px 5px var(--button-sheen);
+}
+
+.tileFace::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(ellipse, color-mix(in srgb, var(--button-sheen) 80%, var(--skill-accent) 10%), transparent 65%);
+    transform: translate(var(--reflection-x, 0px), var(--reflection-y, 0px));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .tile[data-reflecting]:not([data-exiting]) .tileBlock::before {
+        box-shadow: inset 0 -1px 2px var(--button-sheen), 0 9px 17px rgba(0, 0, 0, 0.18);
+    }
+
+    .tile[data-reflecting]:not([data-exiting]) .tileBlock::after,
+    .tile[data-reflecting]:not([data-exiting]) .tileFace::before {
+        opacity: 0.78;
+    }
+}
+
+.tileLogo,
+.tileLabel {
+    position: relative;
+}
+
+.tileLogo {
+    width: clamp(1.375rem, 2.15vw, 1.5rem);
+    height: clamp(1.375rem, 2.15vw, 1.5rem);
+    object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.42));
+}
+
+.tileLabel {
+    color: var(--text-primary-color);
+    font-size: clamp(0.6875rem, 1vw, 0.75rem);
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.emptyState {
+    padding: 1rem 0;
+    color: var(--text-secondary-color);
+    text-align: center;
+    animation: showEmptyState 140ms ease-out 120ms both;
+}
+
+.screenReaderOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@keyframes showEmptyState {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (forced-colors: active) {
+    .searchBar:focus-within,
+    .searchBar .clearButton:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .emptyState {
+        animation: none;
+    }
+
+    .tile {
+        /* Keep tiles visible on the first paint, before React reads the preference. */
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .tile[data-exiting] {
+        display: none;
+    }
+
+    .tileBlock {
+        transform: none !important;
+    }
+
+    .tileBlock::before,
+    .tileBlock::after,
+    .tileFace::before,
+    .searchBar,
+    .searchBar .clearButton,
+    .clearIcon {
+        transition: none;
+    }
 }

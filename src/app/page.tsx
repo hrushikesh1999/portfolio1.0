@@ -1,6 +1,5 @@
 import styles from "./page.module.css";
 import CanvasTheme from "@/components/canvasTheme/CanvasTheme";
-import SkyClouds from "./components/skyClouds/SkyClouds";
 import Home from "./components/home/Home"
 import Contact from "./components/contact/Contact";
 import Experience from "./components/experience/Experience";
@@ -13,10 +12,8 @@ export default function App() {
   return (
     <main className={styles.main}>
 
-      <div id={HOME} className={styles.section}>
-        <SkyClouds>
-          <CanvasTheme />
-        </SkyClouds>
+      <div id={HOME} className={`${styles.section} ${styles.homeSection}`}>
+        <CanvasTheme />
         <Home />
       </div>
 

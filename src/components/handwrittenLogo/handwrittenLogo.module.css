@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
+
+.logo {
+    display: block;
+    width: 40px;
+    height: 40px;
+    fill: var(--text-primary-color);
+}
+
+.completed {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animated {
+        display: none;
+    }
+
+    .completed {
+        display: inline;
+    }
+}

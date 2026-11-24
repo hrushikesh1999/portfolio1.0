@@ -52,5 +52,7 @@ const experienceConfig = [
     },
 ]
 
-export default experienceConfig
+export type ExperienceEntry = (typeof experienceConfig)[number];
+
+export default experienceConfig;
 
