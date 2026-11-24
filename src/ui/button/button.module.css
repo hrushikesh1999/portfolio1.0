@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: center;
     padding: 6px 10px;
-    font-size: 0.875rem;
+    font-family: inherit;
+    font-size: var(--type-label);
     font-weight: 500;
     line-height: 1.75;
     letter-spacing: 0.02857em;
@@ -12,6 +13,19 @@
     cursor: pointer;
     outline: none;
     transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn.compact {
+    --compact-button-size: 2.375rem;
+    min-height: var(--compact-button-size);
+    padding-inline: var(--compact-button-padding, 0.75rem);
+    border-radius: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn.compact {
+        transition: none;
+    }
 }
 
 .btn-active {

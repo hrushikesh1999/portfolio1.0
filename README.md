@@ -8,7 +8,7 @@ This is a personal portfolio website built with Next.js and TypeScript. All styl
 - Custom theme switcher (light/dark mode)
 - Responsive design
 - Interactive sidebar and header
-- Contact form with location map
+- Interactive glass envelope with a contact form
 - Custom icons and assets
 
 ## Showcase
@@ -60,6 +60,7 @@ Use Node.js 26 LTS. The `.nvmrc` file pins the local development version to 26.1
 ## Customization
 - All styles are located in `*.module.css` files under `src/app/components/`, `src/components/`, and `src/ui/`.
 - Update content and assets in the respective folders to personalize your site.
+- Set the server-side `POST_EMAIL` environment variable to the contact provider endpoint. It must accept the `name`, `email`, and `message` form fields and return HTTP 2xx with JSON after accepting a message.
 
 ## Deployment
 You can deploy this site to Vercel, Netlify, or any platform that supports Next.js.

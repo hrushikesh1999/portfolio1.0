@@ -1,4 +1,3 @@
-import Button from "@/ui/button/Button"
 import styles from "./accountLinks.module.css"
 import GithubIcon from "@/assets/icons/GithubIcon"
 import LinkedinIcon from "@/assets/icons/LinkedinIcon"
@@ -32,10 +31,8 @@ const AccountLinks = ({ size = "md" }: Props) => {
         <div className={styles.acntlinks}>
             {
                 accounts.map(a => (
-                    <a key={a.label} href={a.url} target="_blank" aria-label={a.label}>
-                        <Button className={size === "md" ? styles.mediumButton : undefined}>
-                            {a.icon}
-                        </Button>
+                    <a key={a.label} href={a.url} target="_blank" rel="noopener noreferrer" aria-label={a.label} className={size === "md" ? styles.mediumButton : undefined}>
+                        {a.icon}
                     </a>
                 ))
             }

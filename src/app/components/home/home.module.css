@@ -1,28 +1,88 @@
 .home {
-    /* margin-top: 8rem; */
-    min-height: calc(90vh - 8rem);
+    --name-sheen: color-mix(in srgb, var(--text-primary-color), white 18%);
+    --hero-accent: #f3beac;
+    --hero-accent-end: #cebce4;
     position: relative;
-    display: flex;
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
     align-items: center;
+    gap: clamp(1rem, 2.8vw, 3rem);
+    min-height: clamp(31rem, calc(100svh - 8rem), 51rem);
+    max-width: 94rem;
+    margin-inline: auto;
+    pointer-events: none;
 }
 
-.myname {
-    font-size: calc(50px + 7vw);
-    /* font-weight: 700; */
-    /* margin-top: 1rem; */
-    margin-left: -8px;
+.home[data-night="true"] {
+    --name-sheen: color-mix(in srgb, var(--text-primary-color), white 50%);
+    --hero-accent: var(--project-link-color);
+    --hero-accent-end: var(--text-secondary-color);
 }
 
-.shortdesc {
-    margin-top: 1rem;
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.intro {
+    animation: rise-in 500ms ease-out both;
+}
+
+.greet {
     color: var(--text-secondary-color);
 }
 
+.myname {
+    display: table;
+    padding-inline: 0.05em;
+    margin-inline-start: -0.045em;
+    font-size: clamp(3.4rem, 10cqi, 8.4rem);
+    font-weight: 400;
+    line-height: 1.02;
+    color: var(--text-primary-color);
+}
+
+@supports (background-clip: text) {
+    .myname {
+        background-image: linear-gradient(168deg, var(--name-sheen) 14%, var(--text-primary-color) 56%);
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0.02em 0.018em rgba(13, 19, 29, 0.23));
+    }
+}
+
+.shortdesc {
+    max-width: 41ch;
+    margin-top: clamp(1rem, 2.5cqi, 2rem);
+    color: var(--text-secondary-color);
+    text-wrap: pretty;
+    animation: rise-in 500ms ease-out 170ms both;
+}
+
 .navlinks {
-    margin-top: 1.5rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    align-items: center;
+    gap: clamp(0.65rem, 1.6cqi, 1.35rem);
+    margin-top: clamp(1.25rem, 3.2cqi, 2.5rem);
+    animation: fade-in 500ms ease 255ms both;
+}
+
+.navlinks:focus-within {
+    animation: none;
+}
+
+.navlinks .projectButton,
+.navlinks .resumeButton {
+    text-decoration: none;
+    pointer-events: auto;
+}
+
+.navlinks .resumeButton {
+    --compact-button-padding: 0;
+    width: var(--compact-button-size);
+    font: inherit;
 }
 
 .resumeButton svg {
@@ -31,4 +91,210 @@
 
 .resumeButton:hover svg {
     transform: scale(var(--button-icon-zoom-scale));
+}
+
+.scene {
+    --portrait-brightness: 1.025;
+    --portrait-light: #fff3c8;
+    --portrait-fill: rgba(255, 249, 233, 0.11);
+    --portrait-key: 14%;
+    --portrait-rim: rgba(255, 243, 200, 0.17);
+    --portrait-shadow: rgba(31, 32, 40, 0.15);
+    position: relative;
+    width: min(100%, 47rem);
+    justify-self: end;
+    animation: rise-in 650ms ease-out 340ms both;
+}
+
+.home[data-night="true"] .scene {
+    --portrait-brightness: 0.94;
+    --portrait-light: #e9ebed;
+    --portrait-fill: rgba(213, 221, 237, 0.09);
+    --portrait-key: 8%;
+    --portrait-rim: rgba(227, 235, 250, 0.13);
+    --portrait-shadow: rgba(0, 0, 0, 0.19);
+}
+
+@property --hero-glass-light {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: transparent;
+}
+
+.glassPosition {
+    position: absolute;
+    inset: 22% 9% 7% 9%;
+    pointer-events: none;
+}
+
+.glass {
+    --hero-glass-light: var(--button-edge);
+    --glass-shadow: rgba(30, 44, 60, 0.12);
+    position: absolute;
+    inset: 0;
+    border: 1px solid color-mix(in srgb, var(--button-edge) 70%, transparent);
+    border-radius: clamp(1.5rem, 5cqi, 4.5rem);
+    background-color: color-mix(in srgb, var(--button-fog) 48%, var(--sidebar-glass) 29%);
+    background-image:
+        radial-gradient(ellipse 76% 63% at var(--portrait-rim-x, 77%) 0%, color-mix(in srgb, var(--hero-glass-light) 54%, transparent), transparent 86%),
+        linear-gradient(145deg, color-mix(in srgb, var(--hero-glass-light) 24%, transparent), transparent 62%);
+    box-shadow: inset 0 1px 1px color-mix(in srgb, var(--button-sheen) 58%, transparent), 0 16px 42px var(--glass-shadow);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    mask-image: linear-gradient(black 68%, transparent);
+    transform: skewX(-11deg) rotate(-12deg);
+    transition: --hero-glass-light 520ms ease, background-color 520ms ease, border-color 520ms ease, box-shadow 520ms ease;
+}
+
+.home[data-night="true"] .glass {
+    --glass-shadow: rgba(0, 0, 0, 0.19);
+}
+
+@supports (mask-composite: exclude) {
+    .glass::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        padding: 1px;
+        border-radius: inherit;
+        background: radial-gradient(ellipse 82% 67% at var(--portrait-rim-x, 77%) 0%, var(--hero-glass-light), transparent 94%);
+        mask: linear-gradient(black 0 0) content-box, linear-gradient(black 0 0);
+        mask-composite: exclude;
+    }
+}
+
+.portraitDepth {
+    position: relative;
+    filter: drop-shadow(-4px 9px 20px var(--portrait-shadow));
+}
+
+.portraitDepth::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 49% 37% at var(--portrait-rim-x, 77%) 12%, var(--portrait-rim), transparent 94%),
+        radial-gradient(ellipse 38% 29% at var(--portrait-rim-x, 77%) 49%, var(--portrait-rim), transparent 91%);
+    mask: var(--portrait-cutout) center / 100% 100% no-repeat;
+    transform: translate(var(--portrait-rim-offset, 1px), -0.85px);
+    filter: blur(0.75px);
+}
+
+.portraitSurface {
+    --portrait-fade: linear-gradient(
+        to bottom,
+        black 72%,
+        rgba(0, 0, 0, 0.97) 78%,
+        rgba(0, 0, 0, 0.79) 84%,
+        rgba(0, 0, 0, 0.42) 91%,
+        rgba(0, 0, 0, 0.12) 97%,
+        transparent 100%
+    );
+    position: relative;
+    isolation: isolate;
+    mask-image: var(--portrait-fade);
+}
+
+@supports (mask-composite: intersect) {
+    .portraitSurface {
+        /* Reduce translucent edge spill while keeping the opaque portrait intact. */
+        mask-image: var(--portrait-fade), linear-gradient(#000d, #000d), var(--portrait-cutout);
+        mask-size: 100% 100%;
+        mask-repeat: no-repeat;
+        mask-composite: intersect, add;
+    }
+}
+
+.portraitSurface::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mask: var(--portrait-cutout) center / 100% 100% no-repeat;
+    mix-blend-mode: screen;
+    background:
+        radial-gradient(ellipse 19% 25% at 46% 35%, var(--portrait-fill), transparent 94%),
+        radial-gradient(ellipse 18% 24% at 54% 24%, color-mix(in srgb, var(--portrait-light) var(--portrait-key), transparent), transparent 88%),
+        radial-gradient(ellipse 31% 21% at 77% 50%, color-mix(in srgb, var(--portrait-light) var(--portrait-key), transparent), transparent 87%);
+}
+
+.portrait {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: brightness(var(--portrait-brightness));
+    transition: filter 450ms ease;
+    user-select: none;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes rise-in {
+    from { opacity: 0; translate: 0 8px; }
+    to { opacity: 1; translate: none; }
+}
+
+@media (min-width: 951px) and (max-height: 650px) {
+    .home {
+        min-height: calc(100svh - 6.5rem);
+    }
+
+    .shortdesc {
+        margin-top: 0.9rem;
+    }
+
+    .navlinks {
+        margin-top: 1.2rem;
+    }
+
+    .scene {
+        width: min(100%, max(18rem, calc(100svh - 7rem)));
+    }
+}
+
+@media (max-width: 950px) {
+    .home {
+        grid-template-columns: minmax(0, 1fr);
+        gap: clamp(1.8rem, 7cqi, 3.75rem);
+        min-height: auto;
+    }
+
+    .myname {
+        font-size: clamp(3.2rem, 19.5cqi, 7rem);
+    }
+
+    .scene {
+        width: min(100%, 32rem);
+        justify-self: center;
+    }
+}
+
+@media (forced-colors: active) {
+    .myname {
+        color: CanvasText;
+        filter: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .intro,
+    .shortdesc,
+    .navlinks,
+    .scene {
+        animation: none;
+    }
+
+    .glass,
+    .portrait,
+    .resumeButton svg {
+        transition: none;
+    }
+
+    .resumeButton:hover svg {
+        transform: none;
+    }
 }

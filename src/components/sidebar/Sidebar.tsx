@@ -6,7 +6,7 @@ import { useLayout } from "@/context/LayoutContext"
 import { useScroll } from "@/context/ScrollContext";
 import { CONTACT, EXPERIENCE, HOME, SKILLS } from "@/constant";
 import { Section } from "@/types/section";
-import HSvg from "../hSvg/HSvg";
+import HandwrittenLogo from "../handwrittenLogo/HandwrittenLogo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import buttonStyles from "@/ui/button/button.module.css";
@@ -52,7 +52,7 @@ const Sidebar = () => {
             </div>
             <div className={styles.sidebarcontent}>
                 <div style={{ width: "100%" }}>
-                    <HSvg />
+                    <HandwrittenLogo />
                     <ul className={styles.navList}>
                         {
                             sections.map(section => (
@@ -77,9 +77,6 @@ const Sidebar = () => {
                         }
                     </ul>
                 </div>
-            </div>
-            <div className={styles.sidebarfooter}>
-                <p className={styles.copyrightText}>© Copyright 2024 <br /> Hrushikesh Aavula</p>
             </div>
         </div>
     )

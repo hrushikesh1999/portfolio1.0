@@ -8,15 +8,27 @@ const experienceConfig = [
             { role: "Software Engineer", from: "2023", to: "2024" },
         ],
         description: `
-        Building and optimizing scalable web applications with a focus on full-stack development. Contributing to system architecture improvements, enhancing performance, and ensuring efficient data flow across services.
-        - Developing and maintaining high-performance applications using React, Node.js, and JavaScript.
-        - Working on backend services, API development, and database optimization to support scalability.
-        - Implementing real-time features and improving frontend rendering performance.
-        - Collaborating with teams to refine architecture decisions and streamline development workflows.
-        `,
+      Building scalable backend systems and AI-powered applications, focusing on system architecture, APIs, automation, and AI integrations.
+
+      - Developed backend services and microservices using FastAPI, Node.js, and PostgreSQL.
+      - Built AI-powered workflows using LLMs, RAG, tool calling, and AI agents.
+      - Developed real-time features, optimized application performance, and contributed to system architecture.
+    `,
         from: "2023",
         to: "Present",
-        tags: ["React", "Javascript", "Node", "Postgres", "Redux Toolkit", "Typescript", "Openlayers", "Express", "Geoserver", "Microservices", "Docker"],
+        tags: [
+            "Python",
+            "FastAPI",
+            "Node.js",
+            "TypeScript",
+            "PostgreSQL",
+            "React",
+            "LangGraph",
+            "LLMs",
+            "RAG",
+            "AWS",
+            "Docker",
+        ],
     },
     {
         title: "Neudesic Technologies Private Limited.",
@@ -24,33 +36,49 @@ const experienceConfig = [
             { role: "Associate Consultant", from: "2022", to: "2023" },
         ],
         description: `
-        Contributed to the development of scalable web application, focusing on frontend development and state management.
-        - Built responsive UIs with React and optimized API interactions for better performance.
-        - Developed secure, role-based access features and improved state management using Redux and Tanstack Query.
-        - Enhanced frontend efficiency through performance optimizations and component reusability.
-        `,
+      Developed scalable web applications with a focus on frontend architecture, performance, and state management.
+
+      - Built responsive, reusable React components.
+      - Implemented role-based access and state management using Redux.
+      - Optimized API integrations and frontend performance.
+    `,
         from: "2022",
         to: "2023",
-        tags: ["React", "Typescript", "Redux Toolkit", "Redux Saga", ".NET"],
+        tags: [
+            "React",
+            "TypeScript",
+            "Redux Toolkit",
+            "Redux Saga",
+            "TanStack Query",
+            ".NET",
+        ],
     },
     {
         title: "iMapAnalytica Technologies Pvt Ltd.",
         roles: [
             { role: "Web Developer", from: "2021", to: "2022" },
         ],
-        description: ` 
-        Worked on frontend development using React.js, building dynamic and responsive user interfaces. Focused on component-based architecture, state management, and optimizing performance for better user experience.
-        - Developed dynamic and responsive UI components using React, React Hooks, and Redux.
-        - Implemented state management solutions for efficient data handling.
-        - Integrated REST APIs, ensuring seamless data exchange between frontend and backend.
-        - Contributed to Node.js backend development, handling API endpoints and optimizing request handling.
-        - Worked with Express.js for routing and middleware, improving API performance.
-        `,
+        description: `
+      Developed web applications using React and Node.js, focusing on interactive interfaces and API integrations.
+
+      - Built reusable React components and implemented state management.
+      - Developed REST APIs using Node.js and Express.
+      - Integrated geospatial features using OpenLayers and ArcGIS.
+    `,
         from: "2021",
         to: "2022",
-        tags: ["PERN stack", "Typescript", "Openlayers", "ArcGIS API for JS"],
+        tags: [
+            "React",
+            "TypeScript",
+            "Node.js",
+            "Express",
+            "PostgreSQL",
+            "OpenLayers",
+            "ArcGIS",
+        ],
     },
-]
+];
 
-export default experienceConfig
+export type ExperienceEntry = (typeof experienceConfig)[number];
 
+export default experienceConfig;

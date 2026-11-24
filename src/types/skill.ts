@@ -1,16 +1,7 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 
-interface ISkillListSubItem {
+export interface Skill {
     name: string;
     image: StaticImageData;
-    alt: string;
+    accent: string;
 }
-
-interface ISkillListItem {
-    title: string;
-    items: SkillListSubItem[];
-}
-
-
-export type SkillListSubItem = ISkillListSubItem;
-export type SkillListItem = ISkillListItem;

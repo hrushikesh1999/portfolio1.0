@@ -1,0 +1,293 @@
+.page {
+    --page-padding: clamp(1rem, 3.2cqw, 2.25rem);
+    --page-gap: clamp(0.75rem, 2.2svh, 1.375rem);
+    --two-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    --icon-tile-size: 2rem;
+    --role-font-size: var(--type-card-title);
+    position: relative;
+    min-width: 0;
+    padding: var(--page-padding);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: var(--page-gap);
+    border-radius: var(--panel-radius);
+    color: var(--text-primary-color);
+    overflow-wrap: anywhere;
+    backface-visibility: hidden;
+}
+
+.page:focus-visible {
+    outline: 2px solid var(--text-secondary-color);
+    outline-offset: -4px;
+}
+
+.overview,
+.impact {
+    display: grid;
+    gap: var(--page-gap);
+    min-width: 0;
+}
+
+.header {
+    grid-column: 1 / -1;
+    min-inline-size: 0;
+    padding-block-end: max(0.5rem, calc(var(--page-gap) * 0.8));
+    border-block-end: 1px solid var(--outlined-border);
+}
+
+.company,
+.roleRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 0.625rem;
+}
+
+.company {
+    font-weight: 600;
+}
+
+.companyName {
+    flex: 1 1 10rem;
+    min-inline-size: 0;
+}
+
+.currentRole {
+    font-size: var(--role-font-size);
+    font-weight: 650;
+    line-height: var(--leading-heading);
+}
+
+.period,
+.tenure {
+    color: var(--text-secondary-color);
+    font-size: var(--type-caption);
+    line-height: var(--leading-label);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+}
+
+.tenure {
+    background: var(--button-fog);
+    border: 1px solid var(--button-edge);
+    border-radius: 9999px;
+    padding: 0.125rem 0.5rem;
+    white-space: nowrap;
+}
+
+.iconTile {
+    display: grid;
+    place-items: center;
+    flex: none;
+    inline-size: var(--icon-tile-size);
+    block-size: var(--icon-tile-size);
+    color: var(--text-primary-color);
+    background: var(--button-fog);
+    border: 1px solid var(--button-edge);
+    border-radius: 8px;
+    box-shadow: inset 0 1px 1px var(--button-sheen);
+}
+
+.iconTile svg {
+    inline-size: 55%;
+    block-size: 55%;
+}
+
+.roles {
+    --role-gap: 0.125rem;
+    --marker-center: calc(var(--type-label) * var(--leading-label) / 2 + 0.25rem);
+    display: grid;
+    gap: var(--role-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--type-label);
+    line-height: var(--leading-label);
+}
+
+.roles li {
+    position: relative;
+    padding-inline-start: 0.875rem;
+}
+
+.roles li::before,
+.roles li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0.25rem;
+}
+
+.roles li::before {
+    inset-block-start: var(--marker-center);
+    z-index: 1;
+    inline-size: 0.375rem;
+    block-size: 0.375rem;
+    border-radius: 50%;
+    background: var(--text-secondary-color);
+    transform: translate(-50%, -50%);
+}
+
+.roles li:not(:last-child)::after {
+    inset-block: var(--marker-center) calc(-1 * (var(--marker-center) + var(--role-gap)));
+    border-inline-start: 1px solid var(--outlined-border);
+}
+
+.roleRow {
+    justify-content: space-between;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    color: var(--text-secondary-color);
+}
+
+.roleRow .period {
+    white-space: nowrap;
+}
+
+.roles li:first-child .roleRow {
+    color: var(--text-primary-color);
+}
+
+.roles li:first-child::before {
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    background: var(--text-primary-color);
+    box-shadow: 0 0 0 2px var(--chip-border-color);
+}
+
+.summary,
+.contributions {
+    display: grid;
+    gap: calc(var(--page-gap) * 0.6);
+    color: var(--text-secondary-color);
+}
+
+.impact {
+    align-content: start;
+    align-self: stretch;
+    gap: max(0.375rem, calc(var(--page-gap) * 0.85));
+    border-inline-start: var(--divider, 0) solid var(--outlined-border);
+    padding-inline-start: var(--divider-gap, 0);
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--contributions-heading-height, auto);
+    color: var(--text-primary-color);
+    font-size: var(--type-label);
+    font-weight: 600;
+    line-height: var(--leading-label);
+}
+
+.contributions {
+    gap: calc(var(--page-gap) * 0.75);
+    list-style: none;
+    padding: 0;
+}
+
+.contributions li {
+    display: grid;
+    grid-template-columns: var(--icon-tile-size) minmax(0, 1fr);
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.technologies {
+    grid-column: 1 / -1;
+    align-self: end;
+    margin-block-start: clamp(0.25rem, 0.8svh, 0.5rem);
+    padding-block-start: max(0.5rem, calc(var(--page-gap) * 0.85));
+    border-block-start: 1px solid var(--outlined-border);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3125rem;
+}
+
+.tags li {
+    display: flex;
+}
+
+.tags li > div {
+    background: var(--button-fog);
+    border-color: var(--button-edge);
+    box-shadow: inset 0 1px 1px var(--button-sheen);
+    color: var(--text-secondary-color);
+    padding: 0.125rem 0.4375rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+}
+
+.tags li > div:is(:hover, :active) {
+    background: var(--btn-hover-background);
+    box-shadow: inset 0 1px 1px var(--button-sheen);
+    transform: none;
+}
+
+@container experience-album (width >= 42rem) {
+    .page {
+        --contributions-heading-height: calc(var(--role-font-size) * var(--leading-heading));
+        --divider: 1px;
+        --divider-gap: clamp(1rem, 3cqw, 2.25rem);
+        min-height: min(50cqw, 60svh, 29rem);
+        grid-template-columns: var(--two-columns);
+        column-gap: var(--divider-gap);
+    }
+}
+
+@media (min-height: 681px) {
+    @container experience-album (width >= 42rem) {
+        .page {
+            --page-gap: clamp(1.125rem, 2.7svh, 1.75rem);
+            grid-template-rows: auto 1fr auto;
+        }
+    }
+}
+
+@container experience-album (width < 38rem) {
+    .page {
+        --page-padding: clamp(0.625rem, 2.5cqw, 0.875rem);
+        --page-gap: clamp(0.3rem, 1.35cqw, 0.625rem);
+        --icon-tile-size: 1.5rem;
+    }
+
+    .companyName { flex-basis: 6rem; }
+    .tags { gap: 0.1875rem; }
+    .tags li > div { padding: 1px 6px; }
+}
+
+@media (max-height: 680px) {
+    @container experience-album (width >= 26rem) {
+        .page {
+            --contributions-heading-height: calc(var(--role-font-size) * var(--leading-heading));
+            --page-padding: clamp(0.625rem, 2.4svh, 1rem);
+            --page-gap: clamp(0.3rem, 1.1svh, 0.625rem);
+            --divider: 1px;
+            --divider-gap: clamp(0.5rem, 1.4cqw, 1rem);
+            --two-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+            grid-template-columns: var(--two-columns);
+        }
+    }
+}
+
+@media (max-width: 360px), (max-width: 768px) and (max-height: 410px) and (orientation: landscape) {
+    .page {
+        --page-padding: 0.5rem;
+        --page-gap: 0.1875rem;
+    }
+
+    .roles, .contributions { gap: 0.125rem; }
+    .tags { gap: 0.125rem 0.25rem; }
+    .tags li > div { padding: 1px 4px; }
+}
+
+@media (max-width: 768px) and (max-height: 350px) and (orientation: landscape) {
+    .page {
+        --page-padding: 0.25rem;
+        --page-gap: 0.125rem;
+        --icon-tile-size: 1.25rem;
+    }
+}

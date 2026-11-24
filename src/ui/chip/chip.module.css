@@ -1,9 +1,4 @@
 .chip {
-    /* display: inline-block;
-    background-color: var(--chip-bg-color);
-    padding: 2px 10px;
-    border-radius: 32px;
-    font-size: 10px; */
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -14,8 +9,9 @@
     padding: 4px 10px;
     border-radius: 9999px;
 
-    font-size: 10px;
+    font-size: var(--type-caption);
     font-weight: 600;
+    line-height: var(--leading-label);
 
     border: 1px solid var(--chip-border-color);
     backdrop-filter: blur(10px);
