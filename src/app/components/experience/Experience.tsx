@@ -1,6 +1,6 @@
 "use client";
 
-import SectionTitle from "@/components/sectionTitle/SectionTitle";
+import SectionHeading from "@/components/sectionHeading/SectionHeading";
 import { useScroll } from "@/context/ScrollContext";
 import ExperienceAlbum from "./ExperienceAlbum";
 import experienceConfig from "./experienceConfig";
@@ -11,9 +11,7 @@ const Experience = () => {
 
     return (
         <div className={styles.section} ref={experienceRef}>
-            <div className={styles.sectionHeading}>
-                <SectionTitle title="Experience" />
-            </div>
+            <SectionHeading title="Experience" />
             <ExperienceAlbum pages={experienceConfig} />
         </div>
     );

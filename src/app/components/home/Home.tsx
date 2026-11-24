@@ -16,6 +16,7 @@ import styles from "./home.module.css";
 const caramel = Caramel({ subsets: ["latin"], weight: ["400"] });
 const spring = { stiffness: 110, damping: 28, mass: 0.5 };
 const portraitMask = { "--portrait-cutout": `url("${portrait.src}")` } as CSSProperties;
+const heroActionClass = `${buttonStyles.btn} ${buttonStyles["btn-outlined"]} ${buttonStyles.compact}`;
 
 function Home() {
     const { homeRef } = useScroll();
@@ -102,18 +103,18 @@ function Home() {
                     I combine full-stack engineering with AI to turn ideas into intelligent, scalable digital products.
                 </p>
                 <div className={styles.navlinks}>
-                    <Link href="/projects" className={`${buttonStyles.btn} ${buttonStyles["btn-outlined"]} ${styles.projectButton}`}>
+                    <Link href="/projects" className={`${heroActionClass} ${styles.projectButton}`}>
                         Explore My Work
                     </Link>
                     <a
                         href="/resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`${buttonStyles.btn} ${buttonStyles["btn-outlined"]} ${styles.resumeButton}`}
+                        className={`${heroActionClass} ${styles.resumeButton}`}
                         title="View resume"
                         aria-label="View resume"
                     >
-                        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
                             <path d="M14 3v6h6M8 13h8M8 17h5" />
                         </svg>

@@ -92,6 +92,8 @@
     background: transparent;
     color: inherit;
     font: inherit;
+    font-size: var(--type-input);
+    line-height: var(--leading-label);
 }
 
 .searchInput::placeholder {
@@ -103,8 +105,8 @@
     align-self: center;
     padding-block: 0.25rem;
     color: var(--text-secondary-color);
-    font-size: 0.8125rem;
-    line-height: 1.25;
+    font-size: var(--type-body);
+    line-height: var(--leading-label);
     overflow-wrap: anywhere;
     pointer-events: none;
 }
@@ -270,9 +272,9 @@
 
 .tileLabel {
     color: var(--text-primary-color);
-    font-size: clamp(0.6875rem, 1vw, 0.75rem);
+    font-size: var(--type-caption);
     font-weight: 600;
-    line-height: 1.25;
+    line-height: var(--leading-label);
     text-align: center;
     overflow-wrap: anywhere;
 }

@@ -11,7 +11,9 @@
 }
 
 .intro h1 {
-    font-size: clamp(2.25rem, 6vw, 4rem);
+    font-size: var(--type-heading);
+    font-weight: 650;
+    line-height: var(--leading-heading);
 }
 
 .grid {
@@ -47,7 +49,6 @@
 
 .panel p {
     color: var(--text-secondary-color);
-    line-height: 1.65;
     max-width: 75ch;
 }
 
@@ -75,8 +76,9 @@
 }
 
 .projectName {
-    font-size: 1rem;
-    line-height: 1.35;
+    font-size: var(--type-card-title);
+    font-weight: 650;
+    line-height: var(--leading-heading);
 }
 
 .cardIntro {
@@ -86,16 +88,15 @@
 
 .subtitle {
     font-weight: 600;
-    font-size: 0.875rem;
 }
 
 .description {
-    font-size: 0.875rem;
     margin-top: 0.35rem;
 }
 
 .details {
-    font-size: 0.75rem;
+    font-size: var(--type-label);
+    line-height: var(--leading-label);
 }
 
 .actions {

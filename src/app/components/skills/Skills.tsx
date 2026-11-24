@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, useInView } from "motion/react";
 import CancelIcon from "@/assets/icons/CancelIcon";
 import { useScroll } from "@/context/ScrollContext";
-import SectionTitle from "@/components/sectionTitle/SectionTitle";
+import SectionHeading from "@/components/sectionHeading/SectionHeading";
 import Button from "@/ui/button/Button";
 import skillList from "./skillList";
 import SkillTile from "./SkillTile";
@@ -72,7 +72,7 @@ const Skills = () => {
 
     return (
         <div ref={skillsRef}>
-            <SectionTitle title="Skills" />
+            <SectionHeading title="Skills" />
             <div className={styles.skillLayout}>
                 <div className={styles.searchBar} role="search" aria-label="Skills">
                     <span className={styles.searchIcon} aria-hidden="true" />

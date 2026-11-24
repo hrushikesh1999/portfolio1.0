@@ -1,4 +1,14 @@
 :root {
+  --type-caption: 0.75rem;
+  --type-label: 0.8125rem;
+  --type-body: 0.875rem;
+  --type-input: 1rem;
+  --type-card-title: 1rem;
+  --type-heading: clamp(1.125rem, 1.65vw, 1.25rem);
+  --leading-heading: 1.2;
+  --leading-label: 1.4;
+  --leading-body: 1.55;
+
   /* day */
   --primary-color-day: rgba(55, 71, 79, 0.35);
 
@@ -131,6 +141,11 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+}
+
+body {
+  font-size: var(--type-body);
+  line-height: var(--leading-body);
 }
 
 @media (max-width: 768px) {

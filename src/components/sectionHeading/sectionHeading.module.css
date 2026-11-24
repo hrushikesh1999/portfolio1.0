@@ -1,0 +1,34 @@
+.heading {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-block-end: var(--section-heading-gap, 1.5rem);
+    font-size: clamp(var(--type-card-title), 1.45vw, 1.125rem);
+    font-weight: 600;
+    line-height: var(--leading-heading);
+}
+
+.title {
+    min-inline-size: 0;
+    overflow-wrap: anywhere;
+}
+
+.divider {
+    flex: 1 1 0;
+    max-inline-size: 16rem;
+    block-size: 1px;
+    background: linear-gradient(to right, var(--text-secondary-color), transparent);
+    opacity: 0.36;
+    transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .title {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .divider {
+        transform: none !important;
+    }
+}

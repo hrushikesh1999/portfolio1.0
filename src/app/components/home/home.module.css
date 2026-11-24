@@ -30,7 +30,6 @@
 }
 
 .greet {
-    font-size: clamp(1rem, 1.8cqi, 1.36rem);
     color: var(--text-secondary-color);
 }
 
@@ -38,7 +37,7 @@
     display: table;
     padding-inline: 0.05em;
     margin-inline-start: -0.045em;
-    font-size: clamp(4rem, 12.5cqi, 10.4rem);
+    font-size: clamp(3.4rem, 10cqi, 8.4rem);
     font-weight: 400;
     line-height: 1.02;
     color: var(--text-primary-color);
@@ -56,15 +55,12 @@
 .shortdesc {
     max-width: 41ch;
     margin-top: clamp(1rem, 2.5cqi, 2rem);
-    font-size: clamp(1rem, 1.75cqi, 1.35rem);
-    line-height: 1.57;
     color: var(--text-secondary-color);
     text-wrap: pretty;
     animation: rise-in 500ms ease-out 170ms both;
 }
 
 .navlinks {
-    --action-size: 2.75rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -79,19 +75,13 @@
 
 .navlinks .projectButton,
 .navlinks .resumeButton {
-    min-height: var(--action-size);
-    border-radius: 0.9rem;
     text-decoration: none;
     pointer-events: auto;
 }
 
-.navlinks .projectButton {
-    padding-inline: 0.875rem;
-}
-
 .navlinks .resumeButton {
-    width: var(--action-size);
-    padding-inline: 0;
+    --compact-button-padding: 0;
+    width: var(--compact-button-size);
     font: inherit;
 }
 
@@ -274,7 +264,7 @@
     }
 
     .myname {
-        font-size: clamp(3.8rem, 24cqi, 8.5rem);
+        font-size: clamp(3.2rem, 19.5cqi, 7rem);
     }
 
     .scene {
@@ -300,9 +290,7 @@
 
     .glass,
     .portrait,
-    .resumeButton svg,
-    .navlinks .projectButton,
-    .navlinks .resumeButton {
+    .resumeButton svg {
         transition: none;
     }
 

@@ -1,7 +1,7 @@
 .link {
     align-self: center;
     color: var(--project-link-color);
-    font-size: 0.875rem;
+    font-size: var(--type-label);
     font-weight: 600;
     text-decoration: none;
     padding-block: 0.2rem;

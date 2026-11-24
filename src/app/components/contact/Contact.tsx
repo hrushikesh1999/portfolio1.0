@@ -4,10 +4,11 @@ import { useEffect, useId, useRef, useState } from "react";
 import type { ChangeEvent, FormEvent, KeyboardEvent, PointerEvent } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { useScroll } from "@/context/ScrollContext";
-import SectionTitle from "@/components/sectionTitle/SectionTitle";
+import SectionHeading from "@/components/sectionHeading/SectionHeading";
 import TextField from "@/ui/textField/TextField";
 import TextArea from "@/ui/textArea/TextArea";
 import Button from "@/ui/button/Button";
+import buttonStyles from "@/ui/button/button.module.css";
 import type { ContactInfo } from "@/types/contact";
 import styles from "./contact.module.css";
 
@@ -149,9 +150,9 @@ const Contact = () => {
 
     return (
         <div ref={contactRef}>
-            <SectionTitle title="Contact" />
+            <SectionHeading title="Contact" />
             <div className={styles.intro}>
-                <h2>Let&apos;s talk.</h2>
+                <h3>Let&apos;s talk.</h3>
                 <p>Have something in mind? I&apos;d love to hear from you.</p>
             </div>
             <div className={styles.stage} data-phase={phase} onKeyDown={handleKeyDown}>
@@ -203,7 +204,7 @@ const Contact = () => {
                                     <p className={styles.feedback} data-error={sendStatus === "error"} role="status">
                                         {sendStatusText[sendStatus]}
                                     </p>
-                                    <Button type="submit" variant="outlined" className={styles.sendButton} aria-disabled={formLocked}>
+                                    <Button type="submit" variant="outlined" className={`${buttonStyles.compact} ${styles.sendButton}`} aria-disabled={formLocked}>
                                         Send Message
                                     </Button>
                                 </div>

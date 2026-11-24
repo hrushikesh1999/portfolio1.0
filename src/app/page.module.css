@@ -6,12 +6,19 @@
 } */
 
 .section {
-  /* min-height: 100vh; */
-  margin: 7rem 0px 7rem 0px;
+  --section-heading-gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  margin-block: clamp(4rem, 9vw, 7rem);
 }
 
 .homeSection {
-  margin-top: clamp(2.5rem, 7svh, 4.5rem);
+  margin-block-start: clamp(2.5rem, 7svh, 4.5rem);
+}
+
+@media (max-height: 410px) and (orientation: landscape),
+       (max-width: 360px) and (max-height: 600px) {
+  .section {
+    --section-heading-gap: 0.75rem;
+  }
 }
 
 .toggleTheme {
