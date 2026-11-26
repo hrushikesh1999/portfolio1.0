@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { drawStroke, strokes, type Stroke } from "./handwrittenStrokes";
 import styles from "./handwrittenLogo.module.css";
 
+const START_DELAY_SECONDS = 1.5;
 const completedStrokes = strokes.map((stroke) => drawStroke(stroke, 1));
 
 function AnimatedStroke({ stroke }: { stroke: Stroke }) {
@@ -18,7 +19,7 @@ function AnimatedStroke({ stroke }: { stroke: Stroke }) {
         }
 
         const animation = animate(progress, 1, {
-            delay: stroke.delay,
+            delay: START_DELAY_SECONDS + stroke.delay,
             duration: stroke.duration,
             ease: [0.3, 0, 0.4, 1],
         });
