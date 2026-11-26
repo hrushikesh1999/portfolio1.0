@@ -1,13 +1,13 @@
 .skillLayout {
-    --tile-width: clamp(4.875rem, 7.75vw, 5.5rem);
-    --tile-gap: clamp(0.625rem, 1.1vw, 0.875rem);
+    --tile-width: clamp(4.375rem, 6vw, 4.75rem);
+    --tile-gap: clamp(0.5rem, 0.8vw, 0.625rem);
     --tile-columns: repeat(auto-fill, min(100%, var(--tile-width)));
 
     display: grid;
     grid-template-columns: var(--tile-columns);
     column-gap: var(--tile-gap);
     justify-content: center;
-    max-width: calc(7 * var(--tile-width) + 6 * var(--tile-gap));
+    max-width: calc(10 * var(--tile-width) + 9 * var(--tile-gap));
     margin-inline: auto;
 }
 
@@ -189,7 +189,7 @@
     position: relative;
     display: grid;
     min-width: 0;
-    border-radius: clamp(0.75rem, 1.75vw, 1.125rem);
+    border-radius: clamp(0.6875rem, 1.5vw, 0.9375rem);
     transform-style: preserve-3d;
 }
 
@@ -225,7 +225,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: clamp(0.125rem, 0.45vw, 0.25rem);
+    gap: 0.125rem;
     min-width: 0;
     padding: 0.1875rem;
     border: 1px solid var(--button-edge);
@@ -264,18 +264,20 @@
 }
 
 .tileLogo {
-    width: clamp(1.375rem, 2.15vw, 1.5rem);
-    height: clamp(1.375rem, 2.15vw, 1.5rem);
+    width: clamp(1.1875rem, 1.7vw, 1.375rem);
+    height: clamp(1.1875rem, 1.7vw, 1.375rem);
     object-fit: contain;
     filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.42));
 }
 
 .tileLabel {
+    max-inline-size: 100%;
     color: var(--text-primary-color);
-    font-size: var(--type-caption);
+    font-size: 0.6875rem;
     font-weight: 600;
-    line-height: var(--leading-label);
+    line-height: 1.25;
     text-align: center;
+    text-wrap: balance;
     overflow-wrap: anywhere;
 }
 
